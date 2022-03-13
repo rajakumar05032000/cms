@@ -1,0 +1,25 @@
+.form-label{
+    font-family:  "Montserrat-Regular","Poppins", "Arial", "Helvetica Neue", "sans-serif";
+    font-weight: 600;
+    font-size: 14px;
+    font-size: 1rem;
+}
+.btn{
+    font-family:"Roboto", "Arial", "Helvetica Neue", sans-serif;;
+}
+.card
+{
+    border-radius: 12px;
+}
+.form-control{
+    border-radius: 10px;
+}
+.card{
+    border: 0px solid black;
+}
+.im2{
+     margin-top: -17%!important;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
