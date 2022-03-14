@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
 if (isset($_POST['submit'])) {
 
 	$fname = $_POST['first_name'];
-    $lname = $_POST['last_name'];
+  $lname = $_POST['last_name'];
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
 
@@ -214,7 +214,7 @@ if (isset($_POST['submit'])) {
          <input type="text" class="form-control" id="inputEmail4">   
     </div>
 
-    <div class="col-7  offset-md-1">
+    <div class="col-md-7  offset-md-1">
          <label for="formFile" class="form-label">Profile Picture</label>
          <input class="form-control" type="file" id="formFile">
     </div>

@@ -1,3 +1,17 @@
+<?php
+  if(!empty($_POST['g-recaptcha-response']))
+  {
+        $secret = '6LcXPt0eAAAAADpgcB8OzdGBPxTKCWUFmQM38iAL';
+        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+        $responseData = json_decode($verifyResponse);
+        if($responseData->success)
+            $message = "g-recaptcha varified successfully";
+        else
+            $message = "Some error in vrifying g-recaptcha";
+       echo $message;
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,8 +61,23 @@
                             <input type="password" class="form-control" id="inputEmail4">
                         </div>
 
-                        <div class="form-row g-3 my-5 mx-auto">
-                            <center> <button class="btn btn-primary">Login</button></center>
+                        <div class="form-row g-3 my-3 mx-3">
+
+                        </div>
+
+                        <div class="form-row g-2 mt-5 mx-3">
+                            <div class="d-flex align-items justify-content-center">
+                                <div class="g-recaptcha mx-auto"
+                                    data-sitekey="6LcXPt0eAAAAADF0gdx2PesnaggbU6n7j8R25Z53"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row g-3 my-5">
+                            <div class="d-flex align-items justify-content-center">
+                                <input type="submit" class="btn btn-primary " value="Login">
+                            </div>
+
                         </div>
 
                     </form>
@@ -62,6 +91,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
 
     <style>
