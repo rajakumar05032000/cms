@@ -1,4 +1,6 @@
 <?php
+session_start();
+  $message="";
   if(!empty($_POST['g-recaptcha-response']))
   {
         $secret = '6LcXPt0eAAAAADpgcB8OzdGBPxTKCWUFmQM38iAL';
@@ -8,8 +10,20 @@
             $message = "g-recaptcha varified successfully";
         else
             $message = "Some error in vrifying g-recaptcha";
-       echo $message;
    }
+   if (isset($_POST['submit'])) {
+
+        $email = $_POST['username'];
+        $password = md5($_POST['pass']);
+    
+		if($email=='admin@psgtech.ac.in' && $password=='e6e061838856bf47e1de730719fb2609' && $message=='g-recaptcha varified successfully'){
+            $_SESSION['email'] = $email;
+		header("Location: staff_register.php");}
+	    else {
+	    echo "<script>alert('Invalid Credentials or Captcha')</script>";
+	    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -50,15 +64,15 @@
                     <center class="p my-3">
                         <h2>Login</h2>
                     </center>
-                    <form action="">
+                    <form action="" method="POST">
                         <div class="form-row my-3 mx-3">
                             <label for="inputEmail4" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="inputEmail4">
+                            <input type="text" class="form-control" id="username" name="username">
                         </div>
 
                         <div class="form-row g-3 my-3 mx-3">
                             <label for="inputEmail4" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="inputEmail4">
+                            <input type="password" class="form-control" id="pass" name="pass">
                         </div>
 
                         <div class="form-row g-3 my-3 mx-3">
@@ -75,7 +89,7 @@
 
                         <div class="form-row g-3 my-5">
                             <div class="d-flex align-items justify-content-center">
-                                <input type="submit" class="btn btn-primary " value="Login">
+                                <input type="submit" class="btn btn-primary " name ="submit" value="Login">
                             </div>
 
                         </div>

@@ -6,10 +6,10 @@ error_reporting(0);
 
 session_start();
 
-/*
-if (isset($_SESSION['username'])) {
-    header("Location: index.php");
-}*/
+
+if (!isset($_SESSION['email'])) {
+    header("Location: new_login.php");
+}
 
 if (isset($_POST['submit'])) {
 
@@ -29,25 +29,33 @@ if (isset($_POST['submit'])) {
 
 
 	
-		$sql = "SELECT * FROM user WHERE email='$email'";
+		$sql = "create table if not exists staff_details(deptname varchar(100),
+    selection_category varchar(50),
+    gender varchar(20),
+    date_of_joining date,
+    emp_id int primary key,
+    name varchar(100),
+    dob date,
+    blood_grp varchar(10),
+    designation varchar(30),
+    designation_n varchar(30),
+    grade varchar(50),
+    chair_related varchar(150),
+    profile_pic_url varchar(500)
+    )";
 		$result = mysqli_query($conn, $sql);
-		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO user (email, password)
-					VALUES ( '$email', '$password')";
-			$result = mysqli_query($conn, $sql);
-			if ($result) {
-				echo "<script>alert('Wow! User Registration Completed.')</script>";
-				$username = "";
-				$email = "";
-				$_POST['password'] = "";
-				$_POST['cpassword'] = "";
-                header("Location: login.php");
-			} else {
+
+    
+    $sql ="insert into staff_details values('$deptname','$selection_category','$gender','$Date_of_joining',' $employee_id','$name','$date_of_birth','$bloodgroup','$designation','$designation_n','$grade','$if_chair_related_to','$profile_picture')";
+
+    $result = mysqli_query($conn, $sql);
+		if ($result) {
+			echo "<script>alert('Inserted Successfully')</script>";
+			} 
+      else {
 				echo "<script>alert('Woops! Something Wrong Went.')</script>";
 			}
-		} else {
-			echo "<script>alert('Woops! Email Already Exists.')</script>";
-		}
+		
 		
 }
 
