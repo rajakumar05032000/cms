@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>Classy Booking Form</title>
+</head>
+
+<body>
+    <style>
+        body{
+
+            background-image: url("classy.jpg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <center>
+        <h1>Classy booking form</h1>
+    </center>
+    <div style="background-color: aqua;width: 350px;height: 500px ;position :absolute;left : 35%;top : 10%;">
+        <form>
+
+
+            <lable>Full Name *</lable>
+            <input type="text" id="fn" name="fn">
+            <br>
+            <br>
+            <lable>Last Name *</lable>
+            <input type="text" id="ln" name="ln" onclick="fun()">
+            <br>
+            <br>
+            <lable>Phone number *</lable>
+            <input type="number" id="pn" name="pn">
+            <br>
+            <br>
+            <lable>Departure date/Time *</lable>
+            <input type="date" id="dn" name="dn">
+            <br>
+            <br>
+            <lable>Return date/time *</lable>
+            <input type="date" id="rn" name="rn">
+            <br>
+            <br>
+            <lable>Pickup Address *</lable>
+            <input type="text" id="pa" name="pa">
+            <br>
+            <br>
+            <lable>Destination Address *</lable>
+            <input type="text" id="da" name="da">
+            <br>
+            <br>
+            <lable>Journey type *</lable>
+            <input type="text" id="jt" name="jt">
+            <br>
+            <br>
+            <lable>Number of Passengers *</lable>
+            <input type="text" id="np" name="np">
+            <br>
+            <br>
+            <lable>Additional message *</lable>
+            <input type="text" id="am" name="am">
+            <br>
+            <br>
+            <input type="button" value="submit" >
+        </form>
+    </div>
+    </div>
+    </div>
+</body>
+<script>
+ function fun()
+ {
+    document.getElementById('ln').value = document.getElementById('fn').value;
+ }
+</script>
+
+<style>
+
+
+</style>
+</html>
