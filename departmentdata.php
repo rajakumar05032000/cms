@@ -6,7 +6,7 @@ error_reporting(0);
 
 session_start();
 
-$sql = "create table if not exists departmentdata(id varchar(10) primary key,name varchar(100),
+$sql = "create table if not exists departmentdata(name varchar(100) unique,
 year varchar(100),
 about varchar(500),
 vision varchar(750),
@@ -41,19 +41,56 @@ $flash=$row['flash'];
 
 if (isset($_POST['submit'])) {
 
-    $sql = "insert into departmentdata values('1','1','1','1','1','1','1','1','1');";
-    $result = mysqli_query($conn,$sql);
+    
     $name=$_POST['name_of_the_dept'];
     $year=$_POST['year_of_establishment'];
     $about=$_POST['about_the_department'];
     $vision=$_POST['vision_of_the_department'];
     $mision=$_POST['mission_of_the_department'];
-    $hod_image=$_POST["hod's_image"];
+    $hod_image=$_FILES["hod's_image"]['name'];
     $hod_desk=$_POST["Hod's_desk"];
-    $flash=$_POST['img'];
 
-$sql = "update departmentdata set name='$name',year ='$year',about='$about',vision='$vision',mision='$mision',hod_image='$hod_image',hod_desk='$hod_desk',flash='$flash' where id='1'";
+
+$flash="";
+
+$file_name = $_FILES["hod's_image"]['name'];
+$file_tmp =$_FILES["hod's_image"]['tmp_name'];
+move_uploaded_file($file_tmp,"images/".$file_name);
+
+$total = count($_FILES['img']['name']);
+for( $i=0 ; $i < $total ; $i++ ) {
+    $tmpFilePath = $_FILES['img']['tmp_name'][$i];
+    $file_name = $_FILES["img"]['name'][$i];
+    $flash = $flash."$file_name".",";
+    move_uploaded_file($tmpFilePath, "images/".$file_name);
+}
+
+if(!$hod_image || $total == 1 )
+{
+    if(!$hod_image && $total == 1) 
+        {
+            $sql = "update departmentdata set year ='$year',about='$about',vision='$vision',mision='$mision',hod_desk='$hod_desk' where name='$name'";    
+            $result = mysqli_query($conn,$sql);
+        }
+    else if(!$hod_image)
+    {
+        $sql = "update departmentdata set year ='$year',about='$about',vision='$vision',mision='$mision',hod_desk='$hod_desk',flash='$flash' where name='$name'";    
+            $result = mysqli_query($conn,$sql);
+    }
+    else
+    {
+            $sql =  $sql = "update departmentdata set year ='$year',about='$about',vision='$vision',mision='$mision',hod_desk='$hod_desk',hod_image='$hod_image' where name='$name'";   
+            $result = mysqli_query($conn,$sql);
+    }
+}
+else{
+
+$sql = "replace into departmentdata values('$name','$year','$about','$vision','$mision','$hod_image','$hod_desk','$flash')";    
+//$sql = "update departmentdata set name='$name',year ='$year',about='$about',vision='$vision',mision='$mision',hod_image='$hod_image',hod_desk='$hod_desk',flash='$flash' where id='1'";
 $result = mysqli_query($conn,$sql);
+}
+
+
 }
 
 ?>
@@ -90,10 +127,11 @@ $result = mysqli_query($conn,$sql);
     
 <body>
     <div class="container-login100 " style="background-image: url('images/img-01.jpg');">
-        <div class="container card col-md-4" >
+        <div class="container card col-md-4  g-3" >
+        <center><h1 class = "mt-3">Department data</h1></center>
             <div class="col-md-12 ms-3">
-            <center><h1>Department data</h1></center>
-                <form method="POST" action="">
+           
+                <form method="POST" action="" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-10 ">
                         <label for="name" class="form-label mt-3">Name of the department</label>
@@ -106,53 +144,53 @@ $result = mysqli_query($conn,$sql);
                         </div>
                     </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">year of establishment</label>
+                    <div class="col-md-6 mt-3">
+                        <label for="name" class="form-label">Year of establishment</label>
                         <input type="text " class="form-control" id="year_of_establishment" name="year_of_establishment">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-10 mt-3">
                     <label for="name" class="form-label">About the department</label>
                         <input type="text " class="form-control" id="about_the_department" name="about_the_department">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-10">
-                        <label for="name" class="form-label">vision of the department</label>
+                    <div class="col-md-10 mt-3">
+                        <label for="name" class="form-label">Vision of the department</label>
                         <textarea class="form-control mb-3 me-3" id="vision_of_the_department" name="vision_of_the_department" rows="5"></textarea>
 
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-10">
-                        <label for="name" class="form-label">mission of the department</label>
+                    <div class="col-md-10 mt-3">
+                        <label for="name" class="form-label">Mission of the department</label>
                         <textarea class="form-control mb-3 me-3" id="mission_of_the_department" name="mission_of_the_department" rows="5"></textarea>
 
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-10">
-                        <label for="name" class="form-label">hod's image</label>
+                    <div class="col-md-10 mt-3">
+                        <label for="name" class="form-label">Hod's image</label>
                         <input type="file" class="form-control" id="hod's_image" name="hod's_image">
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-10">
-                        <img src="" class="img-thumbnail"  width="100" height="100" id="hod's_pic" name="hod_pic"> 
+                    <div class="col-md-10 mt-3">
+                        <img src="" class="img-thumbnail"  width="100" height="130" id="hod's_pic" name="hod_pic"> 
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-10">
-                        <label for="name" class="form-label">hod's Desk</label>
+                    <div class="col-md-10 mt-3">
+                        <label for="name" class="form-label">Hod's Desk</label>
                         <textarea class="form-control mb-3 me-3" id="Hod's_desk" name="Hod's_desk" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-10">
-                        <label for="name" class="form-label">add images for flash/photo gallery</label>
-                        <input type="file" class="form-control" id="img" name="img" multiple>
+                    <div class="col-md-10 mt-3">
+                        <label for="name" class="form-label">Add images for flash/photo gallery</label>
+                        <input type="file" class="form-control" id="img" name="img[]" multiple>
                     </div>
                 </div>
                 <div class="row mx-auto  mt-3 mb-3">
@@ -187,8 +225,10 @@ $result = mysqli_query($conn,$sql);
                     document.getElementById("about_the_department").value=details.about;
                     document.getElementById("vision_of_the_department").value=details.vision;
                     document.getElementById("mission_of_the_department").value=details.mission;
-                    
-                    document.getElementById("Hod's_desk").value=details.hod_desk;
+                    document.getElementById("hod's_pic").src = "images/"+details.hod_image;
+                    document.getElementById("Hod's_desk").value = details.hod_desk;
+
+                    document.getElementById("hod's_image").value = details.hod_image;
                     
                     
                     }
@@ -196,6 +236,15 @@ $result = mysqli_query($conn,$sql);
                 xmlhttp.open("GET","getvision_mission_by_department.php?q="+deptname,true);
                 xmlhttp.send();
             }
+
+        imgInp = document.getElementById("hod's_image");
+        blah = document.getElementById("hod's_pic");
+        imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+            }
+        }
     </script>
 </body>
 </html>

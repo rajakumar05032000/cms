@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
     
 <body>
     <div class="container-login100 " style="background-image: url('images/img-01.jpg');">
-        <div class="container card col-md-10" >
+        <div class="container card p-4 col-md-10" >
             <center><h1>Graduation Details</h1></center>
             <form method="POST" action="">
             <div class="row">
@@ -129,7 +129,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="name"  class="form-label mt-3 mb-3">Institute/university</label>
+                    <label for="name"  class="form-label mt-3 mb-3">Institute / University</label>
                     <input type="text" class="form-control mb-3 " id="Institude/university" name="Institude/university">
 
                 </div>

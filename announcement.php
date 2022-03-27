@@ -77,7 +77,7 @@ $file=$_POST['File'];
     
 <body>
         <div class="container-login100 " style="background-image: url('images/img-01.jpg');">
-            <div class="container card col-md-12" >
+            <div class="container card p-4 col-md-12" >
                 <center><h1>Announcement Form</h1></center>
                 <div class="row">
                     <div class="col">
@@ -117,10 +117,9 @@ $file=$_POST['File'];
                         <input onclick="f2()" type="file" class="form-control" id="File" name="File">
                     </div>
                 </div>
-                <div class="row mx-auto  mt-3 mb-3">
-                    <div class="col-md-7 mx-auto">
-                        <button type="Submit" class="btn btn-primary "  name="submit">Submit</button>
-            </div>
+                
+                        <center><button type="Submit" class="btn btn-primary mt-4"  name="submit">Submit</button></center>
+            
         </div>
     
             </div>

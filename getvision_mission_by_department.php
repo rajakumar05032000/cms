@@ -11,9 +11,10 @@ while($row = mysqli_fetch_array($result)) {
 	$vision = $row['vision'];
   $mission=$row['mision'];
   $hod_desk=$row['hod_desk'];
+  $hod_image = $row["hod_image"];
+  $flash = $row["flash"];
   
-  
-    $all_details = array("deptname"=>$deptname, "year"=>$year, "about"=>$about, "vision"=>$vision,"mission"=>$mission,"hod_desk"=>$hod_desk);
+    $all_details = array("deptname"=>$deptname, "year"=>$year, "about"=>$about, "vision"=>$vision,"mission"=>$mission,"hod_desk"=>$hod_desk,"hod_image"=>$hod_image,"flash"=>$flash);
 }
 echo json_encode($all_details);
 ?>
