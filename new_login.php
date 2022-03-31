@@ -1,4 +1,8 @@
 <?php
+include 'db_conn.php';
+
+error_reporting(0);
+
 session_start();
   $message="";
   if(!empty($_POST['g-recaptcha-response']))
@@ -16,12 +20,31 @@ session_start();
         $email = $_POST['username'];
         $password = md5($_POST['pass']);
     
-		if($email=='admin@psgtech.ac.in' && $password=='e6e061838856bf47e1de730719fb2609' && $message=='g-recaptcha varified successfully'){
-            $_SESSION['email'] = $email;
-		header("Location: staff_register.php");}
-	    else {
-	    echo "<script>alert('Invalid Credentials or Captcha')</script>";
-	    }
+        // && $message=='g-recaptcha varified successfully'
+		// if($email=='admin@psgtech.ac.in' && $password=='e6e061838856bf47e1de730719fb2609' ){
+        $sql = "SELECT deptname,name,password FROM staff_details WHERE name='$email' and password='$password";
+        $result = mysqli_query($conn,$sql);
+        $_SESSION['email'] = $email;
+
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                // if($password==$row["password"])
+                // {
+                //     $_SESSION["department"] = $row["deptname"];
+                //     header("Location: course_structure_dashboard.php");
+                // } Check for password
+                $_SESSION["department"] = $row["deptname"];
+                header("Location: course_structure_dashboard.php");
+                // else {
+                //     echo "<script>alert('Wrong Password')</script>";
+                //   }
+            }
+          } else {
+            echo "<script>alert('User not found')</script>";
+          }
+
 }
 
 ?>
@@ -56,9 +79,6 @@ session_start();
                     <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="AVATAR"
                         class="img-fluid">
                 </div>
-
-
-
 
                 <div class="container mt-2">
                     <center class="p my-3">

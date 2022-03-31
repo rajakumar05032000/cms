@@ -85,32 +85,25 @@ $result = mysqli_query($conn,$sql);
 <body>
     <div class="container-login100"
         style="background-image: url('images/img-01.jpg');align-items: start;padding-top: 15vh;">
-        <section class="container card col-md-4  mx-auto">
+        <section class="container card col-md-12 mx-auto">
         <form method="POST" action="count.php">
-            <center><h1>Count Form</h1></center>
+            <center><h4>Count Form</h4></center>
             <div class="col-md-12 ms-5">
-            <div class="row">
-                <div class="col-md-7 g-3 mb-3">
-                    <label for="name" class="form-label">Students</label>
+            <div class="row me-4">
+                <div class="col ">
+                    <label for="name" class="form-label ">Students</label>
                     <input type="text" class="form-control" id="students" name="students" value="<?php echo $students;?>">
                 </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-7  mb-3">
+                <div class="col">
                     <label for="name" class="form-label">Qualified Faculty</label>
                     <input type="text" class="form-control" id="Qualified_Faculty" name="Qualified_Faculty" value="<?php echo $qualified_faculty;?>">
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7  mb-3">
+                <div class="col">
                     <label for="name" class="form-label">Classroom</label>
                     <input type="text" class="form-control" id="Classroom" name="Classroom" value="<?php echo $classroom;?>">
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-7  mb-3">
+                <div class="col">
                     <label for="name" class="form-label">Laboratories</label>
                     <input type="text" class="form-control " id="Laboratories" name="Laboratories" value="<?php echo $lab;?>">
                 </div>
@@ -129,6 +122,5 @@ $result = mysqli_query($conn,$sql);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
 </body>
 </html>
