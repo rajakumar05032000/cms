@@ -52,7 +52,12 @@ $result = mysqli_query($conn,$sql);
 
 <!doctype html>
 <html lang="en">
-
+<style>
+    .form-control
+    {
+        
+    }
+</style>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,6 +93,7 @@ $result = mysqli_query($conn,$sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/staff_register.css">
 <link href="./main.css" rel="stylesheet"></head>
+<link rel="stylesheet" type="text/css" href="css/fontstyle.css">
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -531,6 +537,42 @@ $result = mysqli_query($conn,$sql);
                                         
                                         
                                     >
+                                    <li>
+                                            <a href="education_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Graduation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="course_structure_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                               Course structure 
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="count_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Count
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="insert_announcement.php">
+                                                <i class="metismenu-icon"></i>
+                                                Announcement
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="departmentdataindash.php">
+                                                <i class="metismenu-icon"></i>
+                                                department data
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="education_view.php">
+                                                <i class="metismenu-icon"></i>
+                                                view form
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="elements-buttons-standard.html">
                                                 <i class="metismenu-icon"></i>
@@ -730,41 +772,41 @@ $result = mysqli_query($conn,$sql);
                             </ul>
                         </div>
                     </div>
-                </div>    <div class="app-main__outer">
-
-                    <div class="container card  col-sm-11 mx-auto mb-4 mt-4 g-3">
-                    <center><h4>Count Form</h4></center>
-                    <div class="col-md-12 ms-5">
-            <div class="row me-4">
-                <div class="col">
-                    <label for="name" class="form-label fs=10">Students</label>
+                </div>   
+                 <div class="container app-main__outer">
+                 <div class="main-card my-4 card p-5">
+                 <div class="card-body">
+                    <center><h3>Count Form</h3></center>
+                    
+            <div class="row ">
+                <div class="col-md-3">
+                    <label for="name" class="form-label">Students</label>
                     <input type="text" class="form-control" id="students" name="students" value="<?php echo $students;?>">
                 </div>
-                <div class="col">
-                    <label for="name" class="form-label">Qualified Faculty</label>
-                    <input type="text" class="form-control" id="Qualified_Faculty" name="Qualified_Faculty" value="<?php echo $qualified_faculty;?>">
+                <div class="col-md-3">
+                    <label for="name" class="form-label ">Qualified Faculty</label>
+                    <input type="text"class="form-control" id="Qualified_Faculty" name="Qualified_Faculty" value="<?php echo $qualified_faculty;?>">
                 </div>
-                <div class="col">
-                    <label for="name" class="form-label">Classroom</label>
+                <div class="col-md-3">
+                    <label for="name" class="form-label ">Classroom</label>
                     <input type="text" class="form-control" id="Classroom" name="Classroom" value="<?php echo $classroom;?>">
                 </div>
 
-                <div class="col">
+                <div class="col-md-3">
                     <label for="name" class="form-label">Laboratories</label>
-                    <input type="text" class="form-control " id="Laboratories" name="Laboratories" value="<?php echo $lab;?>">
+                    <input type="text" class="form-control" id="Laboratories" name="Laboratories" value="<?php echo $lab;?>">
                 </div>
             </div>
-            </div>
 
-            <div class="row mx-auto mb-3">
-                <div class="col-md-7 mx-auto">
-                    <button type="Submit" class="btn btn-primary btn-lg"  name="submit">Submit</button>
+            <div class="row mx-auto ">
+                <div class="col mt-4 mx-auto">
+                <center><button type="Submit" class="btn btn-primary"  name="submit">Submit</button></center>
                 </div>
             </div>
             </form>
         </section>
     </div>
-
+</div
 
                 </div>
             </div>

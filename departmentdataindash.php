@@ -132,6 +132,7 @@ $result = mysqli_query($conn,$sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/staff_register.css">
 <link href="./main.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/fontstyle.css">
 
 </head>
 <body>
@@ -577,6 +578,42 @@ $result = mysqli_query($conn,$sql);
                                         
                                         
                                     >
+                                    <li>
+                                            <a href="education_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Graduation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="course_structure_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                               Course structure 
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="count_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Count
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="insert_announcement.php">
+                                                <i class="metismenu-icon"></i>
+                                                Announcement
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="departmentdataindash.php">
+                                                <i class="metismenu-icon"></i>
+                                                department data
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="education_view.php">
+                                                <i class="metismenu-icon"></i>
+                                                view form
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="elements-buttons-standard.html">
                                                 <i class="metismenu-icon"></i>
@@ -851,7 +888,7 @@ $result = mysqli_query($conn,$sql);
 
                 
             </form></div>
-        </div>
+        
                 </div>
             </div>
         </div>

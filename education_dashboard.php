@@ -85,6 +85,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/staff_register.css">
+    <link rel="stylesheet" type="text/css" href="css/fontstyle.css">
 <link href="./main.css" rel="stylesheet"></head>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -529,6 +530,43 @@ if (isset($_POST['submit'])) {
                                         
                                         
                                     >
+                                    <li>
+                                            <a href="education_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Graduation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="course_structure_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                               Course structure 
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="count_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Count
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="insert_announcement.php">
+                                                <i class="metismenu-icon"></i>
+                                                Announcement
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="departmentdataindash.php">
+                                                <i class="metismenu-icon"></i>
+                                                department data
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="education_view.php">
+                                                <i class="metismenu-icon"></i>
+                                                view form
+                                            </a>
+                                        </li>
+
                                         <li>
                                             <a href="elements-buttons-standard.html">
                                                 <i class="metismenu-icon"></i>
@@ -729,13 +767,13 @@ if (isset($_POST['submit'])) {
                         </div>
                     </div>
                 </div>    <div class="app-main__outer">
-
-                    <div class="container card  col-sm-10 p-3 mx-auto mb-3 mt-4 g-3">
+                <div class="main-card m-3 p-4 card">
                     
-            <center><h1>Graduation Details</h1></center>
+                    
+            <center><h3>Graduation Details</h3></center>
             <form method="POST" action="">
             <div class="row ">
-                <div class="col ms-5">
+                <div class="col">
                     <label for="name"  class="form-label mt-3">Faculty Code</label>
                             <input type="text" class="form-control " id="faculty_code" name="faculty_code">
 
@@ -748,7 +786,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="name" class="form-label mt-3">Graduate</label>
+                    <label for="name" class="form-label">Graduate</label>
                     <select onchange="myFunction()" id="Graduate" class="form-select" name="outcomes">
                         <option selected>Choose..</option>
                         <option value="UG">UG</option> 
@@ -789,12 +827,12 @@ if (isset($_POST['submit'])) {
                 <center><button type="Submit" class="btn btn-primary mb-4 "  name="submit">Submit</button></center>
               
             
-        </div>
+     
 
     </div>
 </form>
 
-
+</div>
                 </div>
             </div>
         </div>
@@ -816,6 +854,9 @@ function myFunction()
   }
 }
 </script>
+
+
+
 
 </body>
     </html>

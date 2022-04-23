@@ -1,44 +1,10 @@
-<?php 
+<?php
 
 include 'db_conn.php';
 
 error_reporting(0);
 
 session_start();
-
-$sql = "create table if not exists announcement(id int not null auto_increment primary key, fromm varchar(100),
-    tooo varchar(50),
-    doe varchar(20),
-    title varchar(300),
-    url varchar(300),
-    file varchar(100)
-    )";
-$result = mysqli_query($conn, $sql);
-
-if (isset($_POST['submit'])) {
-
-$from = $_POST['from'];
-$to = $_POST['to'];
-$doe = $_POST['Date_of_the_Event'];
-$title = $_POST['title_of_the_link'];
-$url=$_POST['URL_to_be_linked'];
-$file=$_POST['File'];
-
-
-	
-	
-
-    
-    $sql ="insert into announcement(fromm,tooo,doe,title,url,file) values('$from','$to','$doe','$title',' $url','$file')";
-
-    $result = mysqli_query($conn, $sql);
-		if ($result) {
-			echo "<script>alert('Announcement has been made Successfully')</script>";
-			} 
-      else {
-				echo "<script>alert('Woops! Something Wrong Went.')</script>";
-			}
-}
 
 ?>
 
@@ -64,22 +30,12 @@ $file=$_POST['File'];
     =========================================================
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
     -->
+<link href="./main.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+</head>
 
-    <!-- Vendor CSS-->
-    <link href="vendor/select2/reg/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
-    <!-- Main CSS-->
-    <link href="css/reg_main.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/staff_register.css">
-<link href="./main.css" rel="stylesheet"></head>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -759,76 +715,94 @@ $file=$_POST['File'];
                         </div>
                     </div>
                 </div>    <div class="app-main__outer">
-                <div class="main-card my-4 card p-5">
-                 <div class="card-body">
+                    <div class="main-card m-3 card">
+                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-1">
+                            <h3 class="card-title">View Form</h3>   
+                            </div>
+                            <div class="col-md-7 mb-1">
+                                <input type="text" class="form-control" id="myInput" name="search" placeholder="Stat typing Title ,to search" onkeyup="searchfunction()">
+                            </div>
+                            <div class="col-md-7">
                         
-                        <center><h1 class="mt-3">Announcement Form</h1></center>
-                        <div class="row">
-                            <div class="col mx-2">
-                                <label for="name" class="form-label mt-3">Announcement should be active:</label>
-                            </div>
-                        </div>
-                    <form method="POST" action="" class="mx-2">
-                        <div class="row">
-                                <div class="col">
-                                    <label for="name" class="form-label mt-3">From</label>
-                                    <input type="date" class="form-control " id="from" name="from" >
-                                </div>
-                                <div class="col">
-        
-                                    <label for="name" class="form-label mt-3">To</label>
-                                    <input type="date" class="form-control " id="to" name="to" >
-                                </div>
-                                <div class="col">
-                                    <label for="name" class="form-label mt-3">Date of the Event</label>
-                                    <input type="date" class="form-control " id="Date_of_the_Event" name="Date_of_the_Event" >
-                                </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="name" class="form-label mt-3">Title of the link</label>
-                                <textarea class="form-control " id="title_of_the_link" name="title_of_the_link" rows="5"></textarea>
-        
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="name" class="form-label mt-3">URL to be linked</label>
-                                <textarea class="form-control " id="URL_to_be_linked" name="URL_to_be_linked" rows="5"></textarea>
-                            </div>
-                            <div class="col">
-                                <label for="name" class="form-label mt-3">File to be linked,if any</label>
-                                <input onclick="f2()" type="file" class="form-control" id="File" name="File" >
-                            </div>
-                        </div>
+                            
+                        </div>    
                         
-                                <center><button type="Submit" class="btn btn-primary mt-4 mb-4" name="submit">Submit</button></center>
-                    
-                </form></div>
-                </div>
+                             <?php
+                                    $sql = "select * from education";
+                                    $result = mysqli_query($conn,$sql);
+                                ?>
+                                <?php
+                                if(mysqli_num_rows($result) > 0){
+                                    ?>
+                                    <div class="table-responsive-sm">
+                            <table class="mb-0 table table-hover" id="myTable">
+                                <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Employee Id</th>
+                                    <th>Department Code</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $i=1;
+                                while($row = mysqli_fetch_array($result)) {
+                                ?>
+                                <tr>
+                                    <th scope="row"> <?php echo $i ?> </th>
+                                    <td><?php echo $row["faculty_code"] ?></td>
+                                    <td><?php echo $row["department_code"] ?></td>
+                                    <td>
+                                        <a href="updateeducation.php?id=<?php echo $row['faculty_code'] ?>"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="deleteeducation.php?id=<?php echo $row['faculty_code'] ?>"> <i class="bi bi-trash p-3 "></i></a>
+                                    </td>
 
-
-                </div>
-            </div>
+                                </tr>
+                                <?php
+                                $i++;
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                        </div>
+                      </div>
         </div>
-    <script type="text/javascript" src="./assets/scripts/main.js"></script>
+    </div>
+<script type="text/javascript" src="./assets/scripts/main.js"></script>
 
-    <script>
-    const input = document.getElementById('URL_to_be_linked');
+<script>
 
-    input.addEventListener('input', updateValue);
+function searchfunction() {
+  
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
 
-    function updateValue(e) {
-         document.getElementById('File').disabled = true;
+  
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
     }
+  }
+}
+</script>
 
-
-    function f2()
-    {
-        document.getElementById('URL_to_be_linked').disabled = true;
-    }
-    </script>
 
 </body>
-    </html>
-    
+</html>

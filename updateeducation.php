@@ -1,46 +1,48 @@
-<?php 
+<?php
 
 include 'db_conn.php';
-
 error_reporting(0);
 
 session_start();
 
-$sql = "create table if not exists announcement(id int not null auto_increment primary key, fromm varchar(100),
-    tooo varchar(50),
-    doe varchar(20),
-    title varchar(300),
-    url varchar(300),
-    file varchar(100)
-    )";
-$result = mysqli_query($conn, $sql);
+$a_id = $_GET['id'];
+
+$faculty_code = "";
+$deparment_code = "";
+$graduate = "";
+$domain = "";
+$degree = "";
+$institute_university = "";
+
+$sql = "select * from education where faculty_code='$a_id'";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+
+$faculty_code = $row['faculty_code'];
+$deparment_code = $row['department_code'];
+$graduate = $row['graduate'];
+$domain = $row['domain'];
+$degree = $row['degree'];
+$institute_university = $row['institute_university'];
 
 if (isset($_POST['submit'])) {
 
-$from = $_POST['from'];
-$to = $_POST['to'];
-$doe = $_POST['Date_of_the_Event'];
-$title = $_POST['title_of_the_link'];
-$url=$_POST['URL_to_be_linked'];
-$file=$_POST['File'];
 
 
-	
-	
+    $faculty_code = $_POST['faculty_code'];
+    $department_code = $_POST['dep_code'];
+    $graduate = $_POST['outcomes'];
+    $domain = $_POST['Domain'];
+    $degree = $_POST['Degree'];
+    $institute_university = $_POST['Institude/university'];
 
-    
-    $sql ="insert into announcement(fromm,tooo,doe,title,url,file) values('$from','$to','$doe','$title',' $url','$file')";
-
-    $result = mysqli_query($conn, $sql);
-		if ($result) {
-			echo "<script>alert('Announcement has been made Successfully')</script>";
-			} 
-      else {
-				echo "<script>alert('Woops! Something Wrong Went.')</script>";
-			}
+    $sql = "update education set department_code='$department_code',graduate='$graduate',domain='$domain',degree='$degree',institute_university='$institute_university' where faculty_code ='$faculty_code'";
+    $result = mysqli_query($conn,$sql);
 }
 
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -523,42 +525,6 @@ $file=$_POST['File'];
                                         
                                         
                                     >
-                                    <li>
-                                            <a href="education_dashboard.php">
-                                                <i class="metismenu-icon"></i>
-                                                Graduation
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="course_structure_dashboard.php">
-                                                <i class="metismenu-icon"></i>
-                                               Course structure 
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="count_dashboard.php">
-                                                <i class="metismenu-icon"></i>
-                                                Count
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="insert_announcement.php">
-                                                <i class="metismenu-icon"></i>
-                                                Announcement
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="departmentdataindash.php">
-                                                <i class="metismenu-icon"></i>
-                                                department data
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="education_view.php">
-                                                <i class="metismenu-icon"></i>
-                                                view form
-                                            </a>
-                                        </li>
                                         <li>
                                             <a href="elements-buttons-standard.html">
                                                 <i class="metismenu-icon"></i>
@@ -759,53 +725,70 @@ $file=$_POST['File'];
                         </div>
                     </div>
                 </div>    <div class="app-main__outer">
-                <div class="main-card my-4 card p-5">
-                 <div class="card-body">
-                        
-                        <center><h1 class="mt-3">Announcement Form</h1></center>
-                        <div class="row">
-                            <div class="col mx-2">
-                                <label for="name" class="form-label mt-3">Announcement should be active:</label>
-                            </div>
-                        </div>
-                    <form method="POST" action="" class="mx-2">
-                        <div class="row">
-                                <div class="col">
-                                    <label for="name" class="form-label mt-3">From</label>
-                                    <input type="date" class="form-control " id="from" name="from" >
-                                </div>
-                                <div class="col">
-        
-                                    <label for="name" class="form-label mt-3">To</label>
-                                    <input type="date" class="form-control " id="to" name="to" >
-                                </div>
-                                <div class="col">
-                                    <label for="name" class="form-label mt-3">Date of the Event</label>
-                                    <input type="date" class="form-control " id="Date_of_the_Event" name="Date_of_the_Event" >
-                                </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="name" class="form-label mt-3">Title of the link</label>
-                                <textarea class="form-control " id="title_of_the_link" name="title_of_the_link" rows="5"></textarea>
-        
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="name" class="form-label mt-3">URL to be linked</label>
-                                <textarea class="form-control " id="URL_to_be_linked" name="URL_to_be_linked" rows="5"></textarea>
-                            </div>
-                            <div class="col">
-                                <label for="name" class="form-label mt-3">File to be linked,if any</label>
-                                <input onclick="f2()" type="file" class="form-control" id="File" name="File" >
-                            </div>
-                        </div>
-                        
-                                <center><button type="Submit" class="btn btn-primary mt-4 mb-4" name="submit">Submit</button></center>
+
+                    <div class="container card  col-sm-10 p-3 mx-auto mb-3 mt-4 g-3">
                     
-                </form></div>
+            <center><h1>Graduation Details</h1></center>
+            <form method="POST" action="">
+            <div class="row ">
+                <div class="col ms-5">
+                    <label for="name"  class="form-label mt-3">Faculty Code</label>
+                            <input type="text" class="form-control " id="faculty_code" name="faculty_code" value ="<?php echo $faculty_code ?>">
+
                 </div>
+                <div class="col">
+                    <label for="name"  class="form-label mt-3">Department Code</label>
+                            <input type="text" class="form-control " id="dep_code" name="dep_code" value ="<?php echo $deparment_code ?>">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="name" class="form-label mt-3">Graduate</label>
+                    <select onchange="myFunction()" id="Graduate" class="form-select" name="outcomes">
+                        <option selected><?php echo $graduate ?></option>
+                        <option value="UG">UG</option> 
+                        <option value="PG">PG</option>
+                        </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="name" class="form-label mt-3">Domain</label>
+                    <select id="Domain" class="form-select" name="Domain">
+                        <option selected><?php echo $domain ?></option>
+                        <option value="s">S</option> 
+                        <option value="P">P</option>
+                        <option value="PR">PR</option>
+                      </select>
+                </div>
+                <div class="col">
+                    <label for="name" class="form-label mt-3">Degree</label>
+                    <select id="Degree" class="form-select" name="Degree">
+                        <option selected><?php echo $degree ?></option>
+                        <option value="b.tech">b.tech</option> 
+                        <option value="b.e">b.e</option>
+                        <option value="PR">civil</option>
+                      </select>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="name"  class="form-label mt-3 mb-3">Institute / University</label>
+                    <input type="text" class="form-control mb-3 " id="Institude/university" name="Institude/university" value="<?php echo $institute_university ?>">
+
+                </div>
+            </div>
+                
+            
+                <center><button type="Submit" class="btn btn-primary mb-4 "  name="submit">Submit</button></center>
+              
+            
+        </div>
+
+    </div>
+</form>
 
 
                 </div>
@@ -814,21 +797,21 @@ $file=$_POST['File'];
     <script type="text/javascript" src="./assets/scripts/main.js"></script>
 
     <script>
-    const input = document.getElementById('URL_to_be_linked');
 
-    input.addEventListener('input', updateValue);
-
-    function updateValue(e) {
-         document.getElementById('File').disabled = true;
-    }
-
-
-    function f2()
-    {
-        document.getElementById('URL_to_be_linked').disabled = true;
-    }
-    </script>
+function myFunction()
+{
+  select = document.getElementById('Graduate');
+  var option_selected = select.value;
+  if(option_selected=="UG") {
+        document.getElementById('Domain').innerHTML='<option value="S">S</option><option value="R">R</option><option value="PR">PR</option>';
+        document.getElementById('Degree').innerHTML='<option value="B.E">B.E</option><option value="B.Tech">B.Tech</option>';
+  }
+  else  {
+        document.getElementById('Domain').innerHTML='<option value="T">T</option><option value="O">O</option>';
+        document.getElementById('Degree').innerHTML='<option value="M.E">M.E</option><option value="M.Tech">M.Tech</option>';
+  }
+}
+</script>
 
 </body>
     </html>
-    

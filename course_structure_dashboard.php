@@ -509,6 +509,42 @@ if (isset($_POST['submit'])) {
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
+                                <li>
+                                            <a href="education_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Graduation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="course_structure_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                               Course structure 
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="count_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Count
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="insert_announcement.php">
+                                                <i class="metismenu-icon"></i>
+                                                Announcement
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="departmentdataindash.php">
+                                                <i class="metismenu-icon"></i>
+                                                department data
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="education_view.php">
+                                                <i class="metismenu-icon"></i>
+                                                view form
+                                            </a>
+                                        </li>
                                     <li>
                                         <a href="elements-buttons-standard.html">
                                             <i class="metismenu-icon"></i>
