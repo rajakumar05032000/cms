@@ -682,13 +682,15 @@ session_start();
                     <div class="main-card m-3 card">
                         <div class="card-body">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                             <h3 class="card-title">View Form</h3>   
                             </div>
                             <div class="col-md-7 mb-3">
                             <input type="text" class="form-control" id="myInput" name="search" placeholder="Stat typing Title ,to search" onkeyup="searchfunction()">
                             </div>
-                        
+                            <div class="col-sm">
+                                <input type="button" class="btn btn-primary float-right" name ="insert" value="insert" onclick="window.location.href='insert_announcement.php'">
+                            </div>
                             
                         </div>    
                         

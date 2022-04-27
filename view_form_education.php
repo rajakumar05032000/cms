@@ -548,13 +548,15 @@ session_start();
                     <div class="main-card m-3 card">
                         <div class="card-body">
                         <div class="row">
-                            <div class="col-md-1">
+                            <div class="col-sm-3">
                             <h3 class="card-title">View Form</h3>   
                             </div>
-                            <div class="col-md-7 mb-1">
+                            <div class="col-sm-7 mb-1">
                                 <input type="text" class="form-control" id="myInput" name="search" placeholder="Stat typing Title ,to search" onkeyup="searchfunction()">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-sm">
+                                <input type="button" class="btn btn-primary float-right" name ="insert" value="insert" onclick="window.location.href='education_dashboard.php'">
+                            </div>
                         
                             
                         </div>    
