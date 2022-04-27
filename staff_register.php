@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
   $Date_of_joining = $_POST['doj'];
   $employee_id = $_POST['emp_id'];
   $name = $_POST['name'];
-  $password = $_POST['password'];
+  $password = md5($_POST['password']);
   $date_of_birth = $_POST['dob'];
   $bloodgroup = $_POST['BloodGrp'];
   $designation = $_POST['Designation'];
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     date_of_joining date,
     emp_id int primary key,
     name varchar(100),
-    password varchar(18),
+    password varchar(350),
     dob date,
     blood_grp varchar(10),
     designation varchar(30),
