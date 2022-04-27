@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Regular Tables - Tables are the backbone of almost all web applications.</title>
+    <title>Personal Profile</title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="Tables are the backbone of almost all web applications.">
@@ -810,9 +810,9 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="row mt-5">
-                                <h6 class="form-label text-center">Permanent Address</h6>
+                                <h4 class="text-center mt-5">Permanent Address</h4>
                             </div>
-                            <div class="row mt-1 me-2">
+                            <div class="row mt-4 me-2">
                                 <div class="col-md-4">
                                     <label for="pdoorandstreet" class="form-label">Door No & Street Name</label>
                                     <input type="text " class="form-control" id="pdoorandstreet" name="pdoorandstreet">
@@ -836,8 +836,8 @@ if (isset($_POST['submit'])) {
 
 
 
-                            <div class="row mt-5">
-                                <h6 class="form-label text-center">Contact Address</h6>
+                            <div class="row mt-4">
+                                <h4 class="text-center mt-5">Contact Address</h4>
                             </div>
                             <div class="row mt-1 me-2">
                                 <div class="col-md-4">
