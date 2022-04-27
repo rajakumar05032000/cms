@@ -545,170 +545,24 @@ if (isset($_POST['submit'])) {
                                                 view form
                                             </a>
                                         </li>
-                                    <li>
-                                        <a href="elements-buttons-standard.html">
-                                            <i class="metismenu-icon"></i>
-                                            Buttons
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-dropdowns.html">
-                                            <i class="metismenu-icon">
-                                            </i>Dropdowns
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-icons.html">
-                                            <i class="metismenu-icon">
-                                            </i>Icons
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-badges-labels.html">
-                                            <i class="metismenu-icon">
-                                            </i>Badges
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-cards.html">
-                                            <i class="metismenu-icon">
-                                            </i>Cards
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-list-group.html">
-                                            <i class="metismenu-icon">
-                                            </i>List Groups
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-navigation.html">
-                                            <i class="metismenu-icon">
-                                            </i>Navigation Menus
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-utilities.html">
-                                            <i class="metismenu-icon">
-                                            </i>Utilities
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-car"></i>
-                                    Components
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="components-tabs.html">
-                                            <i class="metismenu-icon">
-                                            </i>Tabs
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-accordions.html">
-                                            <i class="metismenu-icon">
-                                            </i>Accordions
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-notifications.html">
-                                            <i class="metismenu-icon">
-                                            </i>Notifications
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-modals.html">
-                                            <i class="metismenu-icon">
-                                            </i>Modals
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-progress-bar.html">
-                                            <i class="metismenu-icon">
-                                            </i>Progress Bar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-tooltips-popovers.html">
-                                            <i class="metismenu-icon">
-                                            </i>Tooltips &amp; Popovers
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-carousel.html">
-                                            <i class="metismenu-icon">
-                                            </i>Carousel
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-calendar.html">
-                                            <i class="metismenu-icon">
-                                            </i>Calendar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-pagination.html">
-                                            <i class="metismenu-icon">
-                                            </i>Pagination
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-scrollable-elements.html">
-                                            <i class="metismenu-icon">
-                                            </i>Scrollable
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-maps.html">
-                                            <i class="metismenu-icon">
-                                            </i>Maps
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="mm-active">
-                                <a href="tables-regular.html">
-                                    <i class="metismenu-icon pe-7s-display2"></i>
-                                    Tables
-                                </a>
-                            </li>
-                            <li class="app-sidebar__heading">Widgets</li>
-                            <li>
-                                <a href="dashboard-boxes.html">
-                                    <i class="metismenu-icon pe-7s-display2"></i>
-                                    Dashboard Boxes
-                                </a>
-                            </li>
-                            <li class="app-sidebar__heading">Forms</li>
-                            <li>
-                                <a href="forms-controls.html">
-                                    <i class="metismenu-icon pe-7s-mouse">
-                                    </i>Forms Controls
-                                </a>
-                            </li>
-                            <li>
-                                <a href="forms-layouts.html">
-                                    <i class="metismenu-icon pe-7s-eyedropper">
-                                    </i>Forms Layouts
-                                </a>
-                            </li>
-                            <li>
-                                <a href="forms-validation.html">
-                                    <i class="metismenu-icon pe-7s-pendrive">
-                                    </i>Forms Validation
-                                </a>
-                            </li>
-                            <li class="app-sidebar__heading">Charts</li>
-                            <li>
-                                <a href="charts-chartjs.html">
-                                    <i class="metismenu-icon pe-7s-graph2">
-                                    </i>ChartJS
-                                </a>
-                            </li>
+                                        <li>
+                                            <a href="personalprof_dash.php">
+                                                <i class="metismenu-icon"></i>
+                                                profile details
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="scheme_dash.php">
+                                                <i class="metismenu-icon"></i>
+                                                scheme form
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="facilities_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                facilities form
+                                            </a>
+                                        </li>
                             <li class="app-sidebar__heading">PRO Version</li>
                             <li>
                                 <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/" target="_blank">
@@ -721,14 +575,14 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </div>
-            <div class="container app-main__outer">
-                <div class="card mx-auto mb-3 mt-4 px-5 py-3">
+            <div class="app-main__outer">
+                <div class="container card col-md-11 mx-auto mt-3 mb-3">
                     <center>
-                        <h1>Course Structure</h1>
+                        <h3>Course Structure</h3>
                     </center>
                     <form action="" method="POST">
                         <div class="row">
-                            <div class="col-ms-5">
+                            <div class="col-md-5">
                                 <label for="name" class="form-label mt-3">Outcomes</label>
                                 <select id="outcomes" class="form-select" name="outcomes" value="<?php echo $outcomes; ?>">
                                     <option selected>Choose...</option>
@@ -740,23 +594,23 @@ if (isset($_POST['submit'])) {
                         </div>
     
                         <div class="row">
-                            <div class="col-ms-5">
-                                <label for="name" class="form-label mt-3">Id</label>
+                            <div class="col-md-5">
+                                <label for="name" class="form-label mt-3 ">Id</label>
                                 <input type="text" class="form-control" id="id" name="id" value="<?php echo $id; ?>">
     
                             </div>
                         </div>
     
                         <div class="row">
-                            <div class="col-ms-7">
+                            <div class="col-md-7">
                                 <label for="name" class="form-label mt-3 mb-3">Text</label>
                                 <textarea class="form-control" id="text" name="text" rows="3"><?php echo $text ?></textarea>
                             </div>
                         </div>
     
-                        <div class="row my-3">
-                            <div class="col-ms-7">
-                                <button type="Submit" class="btn btn-primary btn-lg" name="submit">Submit</button>
+                        <div class="row">
+                            <div class="col mt-3">
+                                <center><button type="Submit" class="btn btn-primary btn-lg" name="submit">Submit</button></center>
                             </div>
                         </div>
                     </form>

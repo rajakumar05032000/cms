@@ -1,121 +1,99 @@
 <?php
-
 include 'db_conn.php';
-
 error_reporting(0);
 
 session_start();
 
+$sql = "create table if not exists facilities( feature varchar(10),Title_of_the_laboratory varchar(100),
+major_equipment_details varchar(200),date_of_inaugration varchar(100),cost_in_lakhs varchar(100))";
 
+$result = mysqli_query($conn,$sql);
 
+$feature = "";
+$Title_of_the_laboratory = "";
+$major_equipment_details = "";
+$date_of_inaugration = "";
+$cost_in_lakhs= "";
+
+$sql = "select * from  facilities";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+
+$feature = $row['feature'];
+$Title_of_the_laboratory = $row['Title_of_the_laboratory'];
+$major_equipment_details= $row['major_equipment-details'];
+$date_of_inaugration = $row['date_of_inaugration'];
+$cost_in_lakhs = $row['cost_in_lakhs'];
 
 if (isset($_POST['submit'])) {
 
+    $sql = "insert into facilities values('1','1','1','1','1','1','1');";
+    $result = mysqli_query($conn,$sql);
 
+    $feature= $_POST['fea_code'];
+    $Title_of_the_laboratory = $_POST['lab_code'];
+    $major_equipment_details = $_POST['dep_code'];
+    $date_of_inaugration = $_POST['doj'];
+    $cost_in_lakhs = $_POST['lakhs'];
+    $feature=$_POST['feature'];
+    $facility_title=$_POST['facility_title'];
+    $logo=$_POST['logo'];
+    $facilities=$_POST['lab_code'];
+    $snapchat=$_POST['lab_code'];
+    $hardware_software_equipment=$_POST['lab_code'];
+    $incharge1=$_POST['lab_code'];
+    $incharge2=$_POST['lab_code'];
+    $incharge3=$_POST['lab_code'];
+    $supporting_staff=$_POST[''];
 
+    $sql = "insert facilities values($feature,'$Title_of_the_laboratory','$major_equipment_details','$date_of_inaugration','$cost_in_lakhs','$facility_title','$logo','$facilities','$snapchat','$hardware_software_equipment','$incharge1,'$incharge2','$incharge3','$supporting_staff)";
+    $result = mysqli_query($conn,$sql);
 
-    $sql = "create table if not exists profile_details(emp_id int, emp_name_a varchar(50),emp_name_b varchar(50),Gender varchar(20),dob date,selection_category varchar(50),
-    dept_name varchar(50), designation varchar(50), dojp varchar(50), dojcp varchar(50),linkedinurl varchar(250),door_and_street_p varchar(50),locality_p varchar(50),city_p varchar(50),pincode_p varchar(50),
-    door_and_street_cp varchar(50),locality_cp varchar(50),city_cp varchar(50), pincode_cp varchar(50), email_official varchar(100), email_personal varchar(100), landline_office varchar(50),Extn varchar(100),landline_res varchar(50),
-    mobile varchar(15),brief_on_yourself varchar(200), blood_grp varchar(10), google_scholar varchar(200),total_publications varchar(10))";
-    
-    $result = mysqli_query($conn, $sql);
-
-
-    $emp_id = $_POST['Emp_id'];
-    $emp_name_a = $_POST['emp_name_a'];
-    $emp_name_b = $_POST['emp_name_b'];
-    $gender = $_POST['inlineRadioOptions1'];
-    $dob = $_POST['dob'];
-    $selection_category = $_POST['inlineRadioOptions2'];
-    $deptname = $_POST['dept_name'];
-    $designation = $_POST['designation'];
-    $dojpsg = $_POST['dojpsg'];
-    $dojcp = $_POST['dojcp'];
-    $linkedinurl = $_POST['linkedinurl'];
-    $pdoorandstreet = $_POST['pdoorandstreet'];
-    $plocality = $_POST['plocality'];
-    $pcity = $_POST['pcity'];
-
-    $ppincode = $_POST['ppincode'];
-    $cdoorandstreet = $_POST['cdoorandstreet'];
-    $clocality = $_POST['clocality'];
-    $ccity = $_POST['ccity'];
-    $cpincode = $_POST['cpincode'];
-    $emailoff = $_POST['emailoff'];
-    $emailpersonal = $_POST['emailpersonal'];
-    $landlineoff = $_POST['landlineoff'];
-    $extn = $_POST['extn'];
-
-
-    
-    $landlineres = $_POST['landlineres'];
-    $mobile = $_POST['mobile'];
-    $briefonyourself = $_POST['briefonyourself'];
-    $BloodGrp = $_POST['BloodGrp'];
-    $googlescholar = $_POST['googlescholar'];
-    $totalpublications = $_POST['totalpublications'];
-
-
-    $sql = "insert into profile_details values($emp_id,'$emp_name_a','$emp_name_b','$gender','$dob','$selection_category','$deptname','$designation','$dojpsg','$dojcp','$linkedinurl','$pdoorandstreet','$plocality','$pcity','$ppincode','$cdoorandstreet','$clocality','$ccity','$cpincode','$emailoff','$emailpersonal','$landlineoff','$extn','$landlineres','$mobile','$briefonyourself','$BloodGrp','$googlescholar','$totalpublications')";
-    $result = mysqli_query($conn, $sql);
-  
     if ($result) {
       echo "<script>alert('Inserted Successfully')</script>";
     } else {
       echo "<script>alert('User already exists')</script>";
     }
-  }
-  
+}
 
 ?>
 
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Regular Tables - Tables are the backbone of almost all web applications.</title>
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-    <meta name="description" content="Tables are the backbone of almost all web applications.">
-    <meta name="msapplication-tap-highlight" content="no">
-    <!--
-    =========================================================
-    * ArchitectUI HTML Theme Dashboard - v1.0.0
-    =========================================================
-    * Product Page: https://dashboardpack.com
-    * Copyright 2019 DashboardPack (https://dashboardpack.com)
-    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
-    =========================================================
-    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-    -->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link
-        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+  <!-- Required meta tags-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Colorlib Templates">
+  <meta name="author" content="Colorlib">
+  <meta name="keywords" content="Colorlib Templates">
 
-    <!-- Vendor CSS-->
-    <link href="vendor/select2/reg/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+  <!-- Title Page-->
+  <title>Registration-Form</title>
 
-    <!-- Main CSS-->
-    <link href="css/reg_main.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/staff_register.css">
-    <link href="./main.css" rel="stylesheet">
+  <!-- Icons font CSS-->
+  <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+  <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <!-- Font special for pages-->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Vendor CSS-->
+  <link href="vendor/select2/reg/select2.min.css" rel="stylesheet" media="all">
+  <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+  <!-- Main CSS-->
+  <link href="css/reg_main.css" rel="stylesheet" media="all">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/staff_register.css">
+  <link href="./main.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+   <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
                 <div class="logo-src"></div>
@@ -644,170 +622,62 @@ if (isset($_POST['submit'])) {
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
-                                    <li>
-                                        <a href="elements-buttons-standard.html">
-                                            <i class="metismenu-icon"></i>
-                                            Buttons
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-dropdowns.html">
-                                            <i class="metismenu-icon">
-                                            </i>Dropdowns
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-icons.html">
-                                            <i class="metismenu-icon">
-                                            </i>Icons
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-badges-labels.html">
-                                            <i class="metismenu-icon">
-                                            </i>Badges
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-cards.html">
-                                            <i class="metismenu-icon">
-                                            </i>Cards
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-list-group.html">
-                                            <i class="metismenu-icon">
-                                            </i>List Groups
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-navigation.html">
-                                            <i class="metismenu-icon">
-                                            </i>Navigation Menus
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="elements-utilities.html">
-                                            <i class="metismenu-icon">
-                                            </i>Utilities
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-car"></i>
-                                    Components
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="components-tabs.html">
-                                            <i class="metismenu-icon">
-                                            </i>Tabs
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-accordions.html">
-                                            <i class="metismenu-icon">
-                                            </i>Accordions
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-notifications.html">
-                                            <i class="metismenu-icon">
-                                            </i>Notifications
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-modals.html">
-                                            <i class="metismenu-icon">
-                                            </i>Modals
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-progress-bar.html">
-                                            <i class="metismenu-icon">
-                                            </i>Progress Bar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-tooltips-popovers.html">
-                                            <i class="metismenu-icon">
-                                            </i>Tooltips &amp; Popovers
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-carousel.html">
-                                            <i class="metismenu-icon">
-                                            </i>Carousel
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-calendar.html">
-                                            <i class="metismenu-icon">
-                                            </i>Calendar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-pagination.html">
-                                            <i class="metismenu-icon">
-                                            </i>Pagination
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-scrollable-elements.html">
-                                            <i class="metismenu-icon">
-                                            </i>Scrollable
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="components-maps.html">
-                                            <i class="metismenu-icon">
-                                            </i>Maps
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="mm-active">
-                                <a href="tables-regular.html">
-                                    <i class="metismenu-icon pe-7s-display2"></i>
-                                    Tables
-                                </a>
-                            </li>
-                            <li class="app-sidebar__heading">Widgets</li>
-                            <li>
-                                <a href="dashboard-boxes.html">
-                                    <i class="metismenu-icon pe-7s-display2"></i>
-                                    Dashboard Boxes
-                                </a>
-                            </li>
-                            <li class="app-sidebar__heading">Forms</li>
-                            <li>
-                                <a href="forms-controls.html">
-                                    <i class="metismenu-icon pe-7s-mouse">
-                                    </i>Forms Controls
-                                </a>
-                            </li>
-                            <li>
-                                <a href="forms-layouts.html">
-                                    <i class="metismenu-icon pe-7s-eyedropper">
-                                    </i>Forms Layouts
-                                </a>
-                            </li>
-                            <li>
-                                <a href="forms-validation.html">
-                                    <i class="metismenu-icon pe-7s-pendrive">
-                                    </i>Forms Validation
-                                </a>
-                            </li>
-                            <li class="app-sidebar__heading">Charts</li>
-                            <li>
-                                <a href="charts-chartjs.html">
-                                    <i class="metismenu-icon pe-7s-graph2">
-                                    </i>ChartJS
-                                </a>
-                            </li>
+
+                                <li>
+                                            <a href="education_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Graduation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="course_structure_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                               Course structure 
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="count_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                Count
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="insert_announcement.php">
+                                                <i class="metismenu-icon"></i>
+                                                Announcement
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="departmentdataindash.php">
+                                                <i class="metismenu-icon"></i>
+                                                department data
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="education_view.php">
+                                                <i class="metismenu-icon"></i>
+                                                view form
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="personalprof_dash.php">
+                                                <i class="metismenu-icon"></i>
+                                                profile details
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="scheme_dash.php">
+                                                <i class="metismenu-icon"></i>
+                                                scheme form
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="facilities_dashboard.php">
+                                                <i class="metismenu-icon"></i>
+                                                facilities form
+                                            </a>
+                                        </li>
+                                    
                             <li class="app-sidebar__heading">PRO Version</li>
                             <li>
                                 <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/"
@@ -821,234 +691,174 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </div>
-            <div class="app-main__outer">
-                <div class="container card col-md-11 mx-auto mt-3 mb-3">
-                    <center>
-                        <h4 class="mt-3">Personal Profile</h4>
-                    </center>
-                    <div class="col-md-12">
-                        <form method="POST" action="" enctype="multipart/form-data">
+   
+        
+              <div class="app-main__outer">
+              <div class="container card col-md-11 mx-auto mt-3 mb-3">
+              
+                <div>
+                    <h2>New Laboratory</h2>
+                    <br>
+                    
+                </div>
+                <div class="row g-3">
+                  <div>
+                    
+                    <div>
+                        <div>
+                          <p >Welcome Ms.Akila G</p>
+                            <div class="col-md-3 offset-md-10 mb-5">
+                            
+                                <button type="Submit" class="btn btn-primary  " name="submit">view</button>
+                            </div>
+                        </div>
+                    </div>    
+                  </div>
+                    <div class="col-md-3 mt-6 ml-6 me-7">
+                    <form method="POST" action="" enctype="multipart/form-data">
                             <div class="row me-2">
                                 <div class="col-md-5">
-                                    <label for="name" class="form-label mt-3">Employee Id</label>
-                                    <input type="text " class="form-control" id="Emp_id" name="Emp_id">
-                                </div>
-                                <div class="col-md-2">
-                                    <label for="name" class="form-label mt-3">Employee Name</label>
-                                    <select id="emp_name_a" class="form-select" name="emp_name_a">
-                                        <option selected="">Choose...</option>
-                                        <option value="Ms">Ms</option>
-                                        <option value="Mr">Mr</option>
-                                        <option value="Mrs">Mrs</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="col-md-3  ">
-                                    <label for="name" class="form-label mt-3">Employee Name</label>
-                                    <input type="text " class="form-control" id="emp_name_b" name="emp_name_b">
-                                </div>
-
-                                <div class="col-md-2">
-                                    <label for="Gender" class="form-label mt-3">Gender</label>
-                                    <br>
-                                    <div class="form-check form-check-inline mt-2">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions1"
-                                            id="inlineRadio1" value="Male">
-                                        <label class="form-check-label" for="inlineRadio1">Male</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions1"
-                                            id="inlineRadio23" value="Female">
-                                        <label class="form-check-label" for="inlineRadio23">Female</label>
-                                    </div>
-                                </div>
+                              <label for="DeptName" class="form-label">Feature</label>
                             </div>
-
-                            <div class="row mt-3 me-2 ">
-                                <div class="col-md-3 ">
-                                    <label for="dob" class="form-label">Date of Birth</label>
-                                    <input type="date" class="form-control" id="dob" name="dob">
-                                </div>
-
-                                <div class="col-md-4 ">
-                                    <label for="Selection_category" class="form-label">Selection Category</label>
-                                    <br>
-                                    <div class="form-check form-check-inline mt-2 ">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions2"
-                                            id="inlineRadio11" value="Grant-in-Aid">
-                                        <label class="form-check-label" for="inlineRadio11">Grant-in-Aid</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions2"
-                                            id="inlineRadio2" value="Self Supporting">
-                                        <label class="form-check-label" for="inlineRadio2">Self Supporting</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 ">
-                                    <label for="dept_name" class="form-label">Department Name</label>
-                                    <input type="text " class="form-control" id="dept_name" name="dept_name">
-                                </div>
-                                <div class="col-md-2">
-                                    <label for="designation" class="form-label">Designation</label>
-                                    <input type="text " class="form-control" id="designation" name="designation">
-                                </div>
-
-                            </div>
-
-
-                            <div class="row mt-3 me-2 ">
-                                <div class="col-md-3 ">
-                                    <label for="dojpsg" class="form-label">Date of Joining at PSG</label>
-                                    <input type="date" class="form-control" id="dojpsg" name="dojpsg">
-                                </div>
-
-                                <div class="col-md-4 ">
-                                    <label for="dojcp" class="form-label">Date of Joining,Current Post</label>
-                                    <input type="date" class="form-control" id="dojcp" name="dojcp">
-                                </div>
-
-                                <div class="col">
-                                    <label for="linkedinurl" class="form-label">Linked in Personal Page URL</label>
-                                    <input type="text " class="form-control" id="linkedinurl" name="linkedinurl">
-                                </div>
-                            </div>
-
-                            <div class="row mt-5">
-                                <h6 class="form-label text-center">Permanent Address</h6>
-                            </div>
-                            <div class="row mt-1 me-2">
-                                <div class="col-md-4">
-                                    <label for="pdoorandstreet" class="form-label">Door No & Street Name</label>
-                                    <input type="text " class="form-control" id="pdoorandstreet" name="pdoorandstreet">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label for="plocality" class="form-label">Locality</label>
-                                    <input type="text " class="form-control" id="plocality" name="plocality">
-                                </div>
-
-                                <div class="col-md-2">
-                                    <label for="pcity" class="form-label">City</label>
-                                    <input type="text " class="form-control" id="pcity" name="pcity">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label for="ppincode" class="form-label">Pincode</label>
-                                    <input type="text " class="form-control" id="ppincode" name="ppincode">
-                                </div>
-                            </div>
-
-
-
-                            <div class="row mt-5">
-                                <h6 class="form-label text-center">Contact Address</h6>
-                            </div>
-                            <div class="row mt-1 me-2">
-                                <div class="col-md-4">
-                                    <label for="cdoorandstreet" class="form-label">Door No & Street Name</label>
-                                    <input type="text " class="form-control" id="cdoorandstreet" name="cdoorandstreet">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label for="clocality" class="form-label">Locality</label>
-                                    <input type="text " class="form-control" id="clocality" name="clocality">
-                                </div>
-
-                                <div class="col-md-2">
-                                    <label for="ccity" class="form-label">City</label>
-                                    <input type="text " class="form-control" id="ccity" name="ccity">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label for="ppincode" class="form-label">Pincode</label>
-                                    <input type="text " class="form-control" id="cpincode" name="cpincode">
-                                </div>
-                            </div>
-
-                            <div class="row mt-3 me-2">
-                                <div class="col-md-3">
-                                    <label for="emailoff" class="form-label">Email Id - Official</label>
-                                    <input type="text " class="form-control" id="emailoff" name="emailoff">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label for="emailpersonal" class="form-label">Email Id - Personal</label>
-                                    <input type="text " class="form-control" id="emailpersonal" name="emailpersonal">
-                                </div>
-
-
-                                <div class="col-md-3">
-                                    <label for="landlineoff" class="form-label">Landline Office</label>
-                                    <input type="text " class="form-control" id="landlineoff" name="landlineoff">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label for="extn" class="form-label">Extn</label>
-                                    <input type="text " class="form-control" id="extn" name="extn">
-                                </div>
-                            </div>
-
-
-
-                            <div class="row mt-3 me-2">
-                                <div class="col-md-3">
-                                    <label for="landlineres" class="form-label">Landline Residence</label>
-                                    <input type="text " class="form-control" id="landlineres" name="landlineres">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label for="mobile" class="form-label">Mobile</label>
-                                    <input type="tel " class="form-control" id="mobile" name="mobile">
-                                </div>
-
-
-                                <div class="col-md-4">
-                                    <label for="briefonyourself" class="form-label">Brief on Yourself</label>
-                                    <input type="text " class="form-control" id="briefonyourself" name="briefonyourself">
-                                </div>
-
-                                <div class="col-md-2">
-                                    <label for="DeptName" class="form-label">Blood Group</label>
-                                    <select id="BloodGrp" class="form-select" name="BloodGrp">
-                                        <option selected>Choose...</option>
-                                        <option>O+ve</option>
-                                        <option>A+ve</option>
-                                        <option>B+ve</option>
-                                        <option>O-ve</option>
-                                        <option>A-ve</option>
-                                        <option>B-ve</option>
-                                      </select>
-                                </div>
-                            </div>
-
-
-                            <div class="row mt-3 me-2">
-                                <div class="col-md-6">
-                                    <label for="googlescholar" class="form-label">Google Scholar Url</label>
-                                    <input type="text " class="form-control" id="googlescholar" name="googlescholar">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label for="totalpublications" class="form-label">Total No.of Publications</label>
-                                    <input type="number" class="form-control" id="totalpublications" name="totalpublications">
-                                </div>
-                               
-                            </div>
-
-                            <div class="row mt-5 mb-3">
-                                    <div class="text-center">
-                                        <button type="Submit" class="btn btn-primary mb-4 "  name="submit">Submit</button>
-                                    </div>
-                            </div>
+                              <select id="DeptName" class="form-select" name="DeptName">
+                                <option selected>-Select-></option>
+                                <option>xx</option>
+                                <option>yy</option>
+                                <option>zz</option>
+                               </select>
                     </div>
+                    </div>
+                  
+                  <div class="col-md-4 ">
+                    <label for="Selection_category" class="form-label">Title of the laboratory</label>
+                    <br>
+                        <div class="col-md-12 ">
+                          <input type="text" class="form-control" id="chair" name="Chair">
+                        </div>
+                  </div>
+
+                <br>
+                <div class="col-md-3">
+                    <label for="Selection_category" class="form-label">Major Equipment Details</label>
+                    <br>
+                    <!-- <div class="row mt-2 g-3"> -->
+                        <div class="col-md-12 ">
+                          <!-- <label for="chair" class="form-label">If Chair,Related to</label> -->
+                          <input type="text" class="form-control" id="chair" name="Chair">
+                        </div>
+                  </div>
+                
+                <div class="col-md-2  ">
+
+                    <label for="doj" class="form-label">Date of Inaugration</label>
+                    <input type="date" class="form-control" id="doj" name="doj">
                 </div>
-                <script type="text/javascript" src="./assets/scripts/main.js"></script>
+                </div><br>
+                <div class="row">
+                <div class="col-md-3">
+                    <label for="password" class="form-label">Cost in Lakhs</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                  </div>
+                <div class="col-md-4">
+                  <label for="facility" class="form-label mt-3">Facility title</label>
+                  <select id="facility" class="form-select" name="fac_tit">
+                    <option selected>-Select-></option>
+                    <option>xx</option>
+                    <option>yy</option>
+                    <option>zz</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label for="Logo" class="form-label mt-3">Logo</label>
+                  <input onclick="f2()" type="file" class="form-control" id="logo" name="logo" >
+              </div>
+                <div class="col-md-2  ">
+                  <label for="name" class="form-label mt-3">Facilities</label>
+                  <input type="text " class="form-control" id="facility" name="facility">
+              </div>
+              </div><br>
+              <div class="row">
+              <div class="col-md-3">
+                <label for="snap" class="form-label mt-3">Snapchat</label>
+                <input onclick="f2()" type="file" class="form-control" id="snap" name="snap" >
+              </div>
+              <div class="col-md-4 ">
+                <label for="hse" class="form-label mt-3">hardware/software/equipment details</label>
+                <input onclick="f2()" type="file" class="form-control" id="hse" name="hse" >
+              </div>
+
+              <div class="col-md-3 offset-md-2">
+                <label for="Incharge1" class="form-label mt-3">Incharge 1</label>
+                <select id="Incharge1" class="form-select" name="Incharge1">
+                  <option selected>-Select-></option>
+                  <option>xx</option>
+                  <option>yy</option>
+                  <option>zz</option>
+                </select>
+              </div><br>
+
+              <div class="col-md-3">
+                <label for="Incharge2" class="form-label mt-3">Incharge 2</label>
+                <select id="Incharge2" class="form-select" name="Incharge2">
+                  <option selected>-Select-></option>
+                  <option>xx</option>
+                  <option>yy</option>
+                  <option>zz</option>
+                </select>
+              </div>
+            <!-- </div> -->
+            <!-- <div class="row"> -->
+            
+              <div class="col-md-2">
+                <label for="Incharge3" class="form-label mt-3">Incharge 3</label>
+                <select id="Incharge3" class="form-select" name="Incharge3">
+                  <option selected>-Select-></option>
+                  <option>xx</option>
+                  <option>yy</option>
+                  <option>zz</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <label for="supp_staff" class="form-label mt-3">Supporting Staff</label>
+                <select id="supp_staff" class="form-select" name="supp_staff">
+                  <option selected>-Select-></option>
+                  <option>xx</option>
+                  <option>yy</option>
+                  <option>zz</option>
+                </select>
+              </div><br>
+
+                <div class="row mx-auto mb-5">
+                  <div class="col-md-2 mx-auto">
+                      <button type="Submit" class="btn btn-primary btn-lg mt-3" name="submit">Submit</button>
+                  </div>
+              </div>
+              </div>
+
+                
+              
+            </div>
+          </form>
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+          <script>
+            function myFunction() {
+              select = document.getElementById('Designation');
+              var option_selected = select.value;
+              if (option_selected == "Teaching")
+                document.getElementById('Designation_n').innerHTML = '<option value="Head of the Department">Head of the Department</option><option value="Lecturer">Lecturer</option>';
+              else if (option_selected == "Non Teaching Technical")
+                document.getElementById('Designation_n').innerHTML = '<option value="Instructor">Instructor</option><option value="Lab Assistant">Lab Assistant</option>';
+              else
+                document.getElementById('Designation_n').innerHTML = '<option value="PA to Principal">PA to Principal</option><option value="Office Assistant">Office Assistant</option>';
+            }
+          </script>
 </body>
 <style>
-    .form-label {
-        font-size: 0.90rem;
-    }
+  .form-label {
+      font-size: 0.90rem;
+  }
 </style>
 
 </html>

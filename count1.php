@@ -1,3 +1,16 @@
+<?php
+
+include 'db_conn.php';
+
+error_reporting(0);
+
+session_start();
+
+$sql = "create table if not exists count_1( id1 varchar(10) primary key,outcomes varchar(100),
+id varchar(50),
+text varchar(250))";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
