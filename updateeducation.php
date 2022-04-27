@@ -731,7 +731,7 @@ if (isset($_POST['submit'])) {
             <center><h1>Graduation Details</h1></center>
             <form method="POST" action="">
             <div class="row ">
-                <div class="col ms-5">
+                <div class="col">
                     <label for="name"  class="form-label mt-3">Faculty Code</label>
                             <input type="text" class="form-control " id="faculty_code" name="faculty_code" value ="<?php echo $faculty_code ?>">
 
