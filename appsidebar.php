@@ -680,6 +680,6 @@
                 </div>
             </div>
             <div class="app-main__outer">
-                    <div class="main-card m-3 card h-100">
+                    <div class="main-card m-3 card min-vh-100">
                         <div class="card-body">
 

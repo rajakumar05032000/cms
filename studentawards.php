@@ -679,7 +679,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>    <div class="app-main__outer">
+                </div>   
+                <div class="app-main__outer">
                     <div class="main-card m-3 card h-100">
                         <div class="card-body">
 
@@ -692,11 +693,12 @@
                             <div class="row mt-2">
                                 <div class="col-md-4">
                                     <label for="name" class="form-label mt-3">Name of the Award</label>
-                                    <select  id="name_of_the_award" class="form-select" name="name_of_the_award">
+                                    <select onchange="chang()" id="name_of_the_award" class="form-select" name="name_of_the_award">
                                         <option selected="">Choose...</option>
                                         <option value="Best Outgoing Student">Best Outgoing Student</option> 
                                         <option value="Best Alumini Achiever">Best Alumini Achiever</option>
                                         <option value="Rank Holder Award">Rank Holder Award</option>
+                                        <option value="Best Project">Best Project</option>
                                     </select>
                                 </div>
 
@@ -723,18 +725,32 @@
                                     <input type="text" class="form-control" name="datepicker" id="datepicker" />
                                 </div>
 
+                                <div class="col-md-3" id="guidecol">
+                                    <label for="name" class="form-label ">Guide</label>
+                                    <input type="text " class="form-control" id="guide" name="rollno">
+                                </div>
+                                
+
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-md-3" id="titlecol">
+                                    <label for="name" class="form-label ">Title</label>
+                                    <input type="text " class="form-control" id="title" name="rollno">
+                                </div>
                             </div>
 
 
-                            <div class="row mt-4">
+                            <div class="row">
                                 <div class="col-md-12 text-center">
                                     <button type="Submit" class="btn btn-primary btn-lg mb-4 " name="submit">Submit</button>
                                 </div>
                             </div>
 
                         </div>
-                    </div
+                    </div>
                 </div>
+               
             </div>
         </div>
     <script type="text/javascript" src="./assets/scripts/main.js"></script>
@@ -750,6 +766,23 @@ $("#datepicker").datepicker({
     minViewMode: "years",
     autoclose:true //to close picker once year is selected
 });
+$("#titlecol").hide();
+$("#guidecol").hide();
+function chang()
+{
+   
+    var s = document.getElementById('name_of_the_award').value;
+    if(s=='Best Project')
+    {
+        $("#titlecol").show();
+        $("#guidecol").show();
+    }
+    else
+    {
+        $("#titlecol").hide();
+        $("#guidecol").hide();
+    }
+}
 </script>
 
 

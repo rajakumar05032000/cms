@@ -1,0 +1,43 @@
+{
+	// Place your cms workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"textbox" : {
+		"prefix": "textbox",
+		"body": " <div class=\"col-md-\">\n<label for=\"\" class=\"form-label \">Name</label>\n<input type=\"text \" class=\"form-control\" id=\" \" name=\" \">\n</div>"
+	},
+	"dropdown" :{
+		"prefix": "dropdown",
+		"body": " <div class=\"col-md-\">\n<label for=\"name\" class=\"form-label \">Name of the Award</label>\n<select  id=\"name_of_the_award\" class=\"form-select\" name=\"name_of_the_award\">\n<option selected=\"\">Choose...</option>\n<option value=\" \"></option> \n<option value=\"\"></option>\n<option value=\"\"></option>\n</select>\n</div>"
+	},
+	"button" :{
+		"prefix":"submitbutton",
+		"body": "<div class=\"col-md-12 text-center\">\n<button type=\"Submit\" class=\"btn btn-primary btn-lg mb-4 \" name=\"submit\">Submit</button>\n</div>"
+	},
+	"imgupload" :{
+		"prefix":"uploadbt",
+		"body": "<div class=\"col-md-\">\n<label for=\"name\" class=\"form-label\">Image</label>\n<input type=\"file\" class=\"form-control\" id=\"hod's_image\" name=\"hod's_image\"></div>"
+	},
+	"date" :{
+		"prefix":"datebt",
+		"body": "<div class=\"col-md-3 pe-1\">\n<label for=\"date\" class=\"form-label\">Date</label>\n<input type=\"date\" class=\"form-control\" id=\"date\" name=\"date\"></div>"
+	},
+	"heading":{
+		"prefix": "headings",
+		"body": " <div class=\"row mt-2\">\n<div class=\"col\">\n<h4 class=\"text-center\">Student Awards</h4>\n</div>\n</div>"
+	}
+}
