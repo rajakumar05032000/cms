@@ -8,7 +8,7 @@ include 'appsidebar.php';
 
 $deptname = $_SESSION['deptname'];
 
-$sql = "create table if not exists placement(deptname varchar(100),
+$sql = "create table if not exists placement(id int auto_increment primary key,deptname varchar(100),
 year varchar(100),
 company_title varchar(500),
 count varchar(100),
@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
     $company_title = $_POST['company_title'];
     $count = $_POST['count'];
     
-    $sql = "insert into placement values('$deptname','$year','$company_title','$count','$students_name_json','$students_roll_json')";    
+    $sql = "insert into placement values(null,'$deptname','$year','$company_title','$count','$students_name_json','$students_roll_json')";    
     $result = mysqli_query($conn,$sql);
 
 }

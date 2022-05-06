@@ -8,7 +8,7 @@ include 'appsidebar.php';
 
 $deptname = $_SESSION['deptname'];
 
-$sql = "create table if not exists internship(deptname varchar(100),
+$sql = "create table if not exists internship(id int auto_increment primary key,deptname varchar(100),
 batch varchar(100),
 description varchar(500),
 type varchar(100),
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
     $rfile_name_pdf = 'internsip_'.$deptname.'-'.date('m-d-Y-His').$_FILES["image"]['name'];
     move_uploaded_file($tmpFilePath, "images/".$rfile_name_pdf);
 
-    $sql = "insert into internship values('$deptname','$batch','$description','$type','$count','$rfile_name_img','$rfile_name_pdf','$students_name_json','$students_roll_json')";    
+    $sql = "insert into internship values(null,'$deptname','$batch','$description','$type','$count','$rfile_name_img','$rfile_name_pdf','$students_name_json','$students_roll_json')";    
     $result = mysqli_query($conn,$sql);
 
 }

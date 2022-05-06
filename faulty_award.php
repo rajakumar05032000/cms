@@ -7,7 +7,7 @@ include 'appsidebar.php';
 
 <?php
 
-$sql = "create table if not exists faculty_awards(deptname varchar(100),
+$sql = "create table if not exists faculty_awards(id int auto_increment primary key,deptname varchar(100),
 Faculty_name varchar(100),
 description varchar(500),
 date_ varchar(100),
@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
     $rfile_name = 'Faculty_award_'.$deptname.'-'.date('m-d-Y-His').$_FILES["image"]['name'];
     move_uploaded_file($tmpFilePath, "images/".$rfile_name);
     
-    $sql = "insert into faculty_awards values('$deptname','$type','$description','$date_','$rfile_name')";    
+    $sql = "insert into faculty_awards values(null,'$deptname','$type','$description','$date_','$rfile_name')";    
     $result = mysqli_query($conn,$sql);
 
 }

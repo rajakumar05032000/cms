@@ -9,7 +9,7 @@ include 'appsidebar.php';
 
 $deptname = $_SESSION['deptname'];
 
-$sql = "create table if not exists student_publication(deptname varchar(100),
+$sql = "create table if not exists student_publication(id int auto_increment primary key,deptname varchar(100),
 title varchar(100),
 journal varchar(500),
 count varchar(100),
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
     
     
 
-    $sql = "insert into student_publication values('$deptname','$Title','$Journal','$count','$Guide','$datepub','$students_name_json','$students_roll_json')";    
+    $sql = "insert into student_publication values(null,'$deptname','$Title','$Journal','$count','$Guide','$datepub','$students_name_json','$students_roll_json')";    
     $result = mysqli_query($conn,$sql);
 
 }

@@ -9,7 +9,7 @@ include 'appsidebar.php';
 
 $deptname = $_SESSION['deptname'];
 
-$sql = "create table if not exists training_program(deptname varchar(100),
+$sql = "create table if not exists training_program(id int auto_increment primary key,deptname varchar(100),
 type varchar(100),
 fors varchar(500),
 start_date varchar(100),
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
     move_uploaded_file($tmpFilePath, "images/".$rfile_name_pdf);
 
 
-    $sql = "insert into training_program values('$deptname','$type','$fors','$dos','$doe','$rfile_name_pdf','$speaker_json','$description_json')";    
+    $sql = "insert into training_program values(null,'$deptname','$type','$fors','$dos','$doe','$rfile_name_pdf','$speaker_json','$description_json')";    
     $result = mysqli_query($conn,$sql);
 
 }

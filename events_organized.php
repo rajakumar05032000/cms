@@ -9,7 +9,7 @@ include 'appsidebar.php';
 
 
 
-$sql = "create table if not exists events_organized(deptname varchar(100),
+$sql = "create table if not exists events_organized(id int auto_increment primary key,deptname varchar(100),
 type_ varchar(100),
 description varchar(500),
 from_ varchar(750),
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         $gallery = $gallery."$rfile_name".",";
         move_uploaded_file($tmpFilePath, "images/".$rfile_name);
     }
-    $sql = "insert into events_organized values('$deptname','$type','$description','$from','$to','$gallery')";    
+    $sql = "insert into events_organized values(null,'$deptname','$type','$description','$from','$to','$gallery')";    
     $result = mysqli_query($conn,$sql);
 
 }

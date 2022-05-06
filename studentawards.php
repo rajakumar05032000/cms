@@ -9,7 +9,7 @@ include 'appsidebar.php';
 
 $deptname = $_SESSION['deptname'];
 
-$sql = "create table if not exists studentawards(deptname varchar(100),
+$sql = "create table if not exists studentawards(id int auto_increment primary key,deptname varchar(100),
 award_name varchar(100),
 name varchar(500),
 rollno varchar(100),
