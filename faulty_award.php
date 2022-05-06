@@ -4,6 +4,35 @@ session_start();
 include 'appsidebar.php';
 ?>
 
+
+<?php
+
+$sql = "create table if not exists faculty_awards(deptname varchar(100),
+Faculty_name varchar(100),
+description varchar(500),
+date_ varchar(100),
+img varchar(500) )";
+
+$result = mysqli_query($conn,$sql);
+
+if (isset($_POST['submit'])) {
+
+    $deptname = $_SESSION['deptname'];
+    $type = $_POST['faculty_list'];
+    $description = $_POST['description'];
+    $date_ = $_POST['date'];
+
+    $tmpFilePath = $_FILES['image']['tmp_name'];
+    $rfile_name = 'Faculty_award_'.$deptname.'-'.date('m-d-Y-His').$_FILES["image"]['name'];
+    move_uploaded_file($tmpFilePath, "images/".$rfile_name);
+    
+    $sql = "insert into faculty_awards values('$deptname','$type','$description','$date_','$rfile_name')";    
+    $result = mysqli_query($conn,$sql);
+
+}
+
+?>
+
 <script>
 
 function fetchnames()
@@ -21,11 +50,15 @@ function fetchnames()
             }
 fetchnames();
 </script>
+
+
 <div class="row mt-2">
 <div class="col">
     <h4 class="text-center">Faculty Award</h4>
 </div>   
 </div>
+
+<form method="POST" action="" enctype="multipart/form-data">
  <div class="row mt-4">
 <div class="col-md-4">
 <label for="faculty_list" class="form-label ">Faculty List</label>
@@ -39,7 +72,7 @@ fetchnames();
 
  <div class="col-md-3">
 <label for="description" class="form-label ">Description</label>
-<input type="text " class="form-control" id="description " name="description ">
+<input type="text " class="form-control" id="description " name="description">
 </div>
 
 <div class="col-md-3 pe-1">
@@ -51,7 +84,7 @@ fetchnames();
 <div class="row mt-3">
 <div class="col-md-4">
                                     <label for="name" class="form-label">Image</label>
-                                    <input type="file" class="form-control" id="hod's_image" name="hod's_image">
+                                    <input type="file" class="form-control" id="image" name="image">
                                 </div>
 </div>
 
@@ -61,7 +94,7 @@ fetchnames();
     </div>
 </div>
 
-
+        </form>
 <?php
 
 include 'endtags.php';
