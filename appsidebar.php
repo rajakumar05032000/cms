@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="css/staff_register.css">
 <link href="./main.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/fontstyle.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
