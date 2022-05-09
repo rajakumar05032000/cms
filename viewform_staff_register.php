@@ -7,9 +7,9 @@ error_reporting(0);
 session_start();
 
 
-if (!isset($_SESSION['email'])) {
-    header("Location: new_login.php");
-}
+// if (!isset($_SESSION['email'])) {
+//     header("Location: new_login.php");
+// }
 
 if (isset($_POST['submit'])) {
 

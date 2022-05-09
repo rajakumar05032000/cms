@@ -446,7 +446,13 @@
                 </div>    <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
-                          
+                            <li class="app-sidebar__heading">Dashboards</li>
+                            <li>
+                                <a href="index.html">
+                                    <i class="metismenu-icon pe-7s-rocket"></i>
+                                    Dashboard Example 1
+                                </a>
+                            </li>
                             <li class="app-sidebar__heading">UI Components</li>
                             <li
                                 
@@ -460,7 +466,7 @@
                             >
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-diamond"></i>
-                                    View form
+                                    Elements
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul
@@ -474,54 +480,56 @@
                                     
                                 >
                                     <li>
-                                        <a href="viewform_announcement.php">
+                                        <a href="elements-buttons-standard.html">
                                             <i class="metismenu-icon"></i>
-                                            Announcement
+                                            Buttons
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="view_form_education.php">
+                                        <a href="elements-dropdowns.html">
                                             <i class="metismenu-icon">
-                                            </i> Education details
+                                            </i>Dropdowns
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="viewform_award.php">
+                                        <a href="elements-icons.html">
                                             <i class="metismenu-icon">
-                                            </i>Award
+                                            </i>Icons
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="viewform_mousigned.php">
+                                        <a href="elements-badges-labels.html">
                                             <i class="metismenu-icon">
-                                            </i>Mou signed
+                                            </i>Badges
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="viewform_social.php">
+                                        <a href="elements-cards.html">
                                             <i class="metismenu-icon">
-                                            </i>Social
+                                            </i>Cards
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="viewform_upload.php">
+                                        <a href="elements-list-group.html">
                                             <i class="metismenu-icon">
-                                            </i>Upload
+                                            </i>List Groups
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="viewform_staff_register.php">
+                                        <a href="elements-navigation.html">
                                             <i class="metismenu-icon">
-                                            </i>staff Register
+                                            </i>Navigation Menus
                                         </a>
                                     </li>
-                                    
+                                    <li>
+                                        <a href="elements-utilities.html">
+                                            <i class="metismenu-icon">
+                                            </i>Utilities
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li
-
-
-                            
                                 
                                 
                                 
@@ -536,7 +544,7 @@
                             >
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-car"></i>
-                                    Other Forms
+                                    Components
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul
@@ -553,119 +561,120 @@
                                     
                                 >
                                     <li>
-                                        <a href="award.php">
+                                        <a href="components-tabs.html">
                                             <i class="metismenu-icon">
-                                            </i>Award 
+                                            </i>Tabs
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="count_dashboard.php">
+                                        <a href="components-accordions.html">
                                             <i class="metismenu-icon">
-                                            </i>Count 
+                                            </i>Accordions
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="course_structure_dashboard.php">
+                                        <a href="components-notifications.html">
                                             <i class="metismenu-icon">
-                                            </i>Course Structure
+                                            </i>Notifications
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="education_dashboard.php">
+                                        <a href="components-modals.html">
                                             <i class="metismenu-icon">
-                                            </i>Education Details
+                                            </i>Modals
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="events_organized.php">
+                                        <a href="components-progress-bar.html">
                                             <i class="metismenu-icon">
-                                            </i>Events Organized
+                                            </i>Progress Bar
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="facilities_dashboard.php">
+                                        <a href="components-tooltips-popovers.html">
                                             <i class="metismenu-icon">
-                                            </i>Facilities
+                                            </i>Tooltips &amp; Popovers
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="faulty_award.php">
+                                        <a href="components-carousel.html">
                                             <i class="metismenu-icon">
-                                            </i>Faculty Award
+                                            </i>Carousel
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="internship.php">
+                                        <a href="components-calendar.html">
                                             <i class="metismenu-icon">
-                                            </i>Internship
+                                            </i>Calendar
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="personalprof_dash.php">
+                                        <a href="components-pagination.html">
                                             <i class="metismenu-icon">
-                                            </i>Personal Profile
+                                            </i>Pagination
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="placement.php">
+                                        <a href="components-scrollable-elements.html">
                                             <i class="metismenu-icon">
-                                            </i>Placement
+                                            </i>Scrollable
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="staff_register.php">
+                                        <a href="components-maps.html">
                                             <i class="metismenu-icon">
-                                            </i>Staff Rgister
+                                            </i>Maps
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="student_publication.php">
-                                            <i class="metismenu-icon">
-                                            </i>Student Publication
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="studentawards.php">
-                                            <i class="metismenu-icon">
-                                            </i>Student Awards
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="training_program.php">
-                                            <i class="metismenu-icon">
-                                            </i>Training Program
-                                        </a>
-                                    </li>
-
-
-                                    <li>
-                                        <a href="award.php">
-                                            <i class="metismenu-icon">
-                                            </i>Award
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="mousigned.php">
-                                            <i class="metismenu-icon">
-                                            </i>MOU Signed
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="social.php">
-                                            <i class="metismenu-icon">
-                                            </i>Social
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="upload.php">
-                                            <i class="metismenu-icon">
-                                            </i>Upload
-                                        </a>
-                                    </li>
-                                    
                                 </ul>
                             </li>
-                            
+                            <li  class="mm-active" >
+                                <a href="tables-regular.html">
+                                    <i class="metismenu-icon pe-7s-display2"></i>
+                                    Tables
+                                </a>
+                            </li>
+                            <li class="app-sidebar__heading">Widgets</li>
+                            <li>
+                                <a href="dashboard-boxes.html">
+                                    <i class="metismenu-icon pe-7s-display2"></i>
+                                    Dashboard Boxes
+                                </a>
+                            </li>
+                            <li class="app-sidebar__heading">Forms</li>
+                            <li>
+                                <a href="forms-controls.html">
+                                    <i class="metismenu-icon pe-7s-mouse">
+                                    </i>Forms Controls
+                                </a>
+                            </li>
+                            <li>
+                                <a href="forms-layouts.html">
+                                    <i class="metismenu-icon pe-7s-eyedropper">
+                                    </i>Forms Layouts
+                                </a>
+                            </li>
+                            <li>
+                                <a href="forms-validation.html">
+                                    <i class="metismenu-icon pe-7s-pendrive">
+                                    </i>Forms Validation
+                                </a>
+                            </li>
+                            <li class="app-sidebar__heading">Charts</li>
+                            <li>
+                                <a href="charts-chartjs.html">
+                                    <i class="metismenu-icon pe-7s-graph2">
+                                    </i>ChartJS
+                                </a>
+                            </li>
+                            <li class="app-sidebar__heading">PRO Version</li>
+                            <li>
+                                <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/" target="_blank">
+                                    <i class="metismenu-icon pe-7s-graph2">
+                                    </i>
+                                    Upgrade to PRO
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -673,4 +682,3 @@
             <div class="app-main__outer">
                     <div class="main-card m-3 card min-vh-100">
                         <div class="card-body">
-
