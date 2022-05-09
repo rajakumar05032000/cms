@@ -34,7 +34,9 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-
+<?php
+include "appsidebar.php"
+?>
 
 
                         <center><h1 class="mt-3">Announcement Form</h1></center>
@@ -87,4 +89,8 @@ if (isset($_POST['submit'])) {
         </div>
     <script type="text/javascript" src="./assets/scripts/main.js"></script></body>
     </html>
+
+    <?php
+    include "endtags.php";
+    ?>
     
