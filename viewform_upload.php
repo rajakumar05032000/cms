@@ -8,7 +8,7 @@ session_start();
 
 ?>
 
-<!doctype html>
+
 <?php
 include 'appsidebar.php'
 ?>

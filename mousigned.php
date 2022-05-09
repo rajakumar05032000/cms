@@ -72,3 +72,7 @@ include 'appsidebar.php'
                                 <center><button type="Submit" class="btn btn-primary"  name="submit">Submit</button></center>
                                 </div>
                             </div>
+
+                            <?php
+include 'endtags.php'
+?>

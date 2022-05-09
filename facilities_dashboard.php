@@ -229,3 +229,6 @@ include 'appsidebar.php'
 </style>
 
 </html>
+<?php
+include 'endtags.php'
+?>
