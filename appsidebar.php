@@ -1,3 +1,28 @@
+<?php
+include 'db_conn.php';
+session_start();
+if (isset($_POST['logout'])) { 
+
+    $login_tym = $_SESSION["login_tym"] ;
+    $emp_id =  $_SESSION["empid"] ;
+
+    $logout_tym = date('Y-m-d H:i:s'); 
+
+    $sql1 = "update log_details set logout_tym='$logout_tym' where user='$emp_id' and login_tym='$login_tym'";
+	$result = mysqli_query($conn, $sql1);
+
+    session_destroy();
+    header("Location: new_login.php");
+}
+
+?>
+
+
+<?php
+$designation = $_SESSION['designation'] ;
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,14 +60,13 @@
     <link rel="stylesheet" type="text/css" href="css/staff_register.css">
 <link href="./main.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/fontstyle.css">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
     <div class="app-header header-shadow">
         <div class="app-header__logo">
-            <div class="logo-src"></div>
+            
             <div class="header__pane ml-auto">
                 <div>
                     <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -63,41 +87,17 @@
             </div>
         </div>
         <div class="app-header__menu">
-            <span>
-                <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                    <span class="btn-icon-wrapper">
-                        <i class="fa fa-ellipsis-v fa-w-6"></i>
-                    </span>
-                </button>
-            </span>
+        <form method ="POST" action = "appsidebar.php">  <input type="submit" tabindex="0" class="fa fa-power-off" name="logout" value="Logout"></form>
+        
         </div>    <div class="app-header__content">
             <div class="app-header-left">
                 <div class="search-wrapper">
-                    <div class="input-holder">
-                        <input type="text" class="search-input" placeholder="Type to search">
-                        <button class="search-icon"><span></span></button>
-                    </div>
+                    
                     <button class="close"></button>
                 </div>
                 <ul class="header-menu nav">
-                    <li class="nav-item">
-                        <a href="javascript:void(0);" class="nav-link">
-                            <i class="nav-link-icon fa fa-database"> </i>
-                            Statistics
-                        </a>
-                    </li>
-                    <li class="btn-group nav-item">
-                        <a href="javascript:void(0);" class="nav-link">
-                            <i class="nav-link-icon fa fa-edit"></i>
-                            Projects
-                        </a>
-                    </li>
-                    <li class="dropdown nav-item">
-                        <a href="javascript:void(0);" class="nav-link">
-                            <i class="nav-link-icon fa fa-cog"></i>
-                            Settings
-                        </a>
-                    </li>
+                    
+                    
                 </ul>        </div>
             <div class="app-header-right">
                 <div class="header-btn-lg pr-0">
@@ -106,8 +106,8 @@
                             <div class="widget-content-left">
                                 <div class="btn-group">
                                     <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                        <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
-                                        <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                        <!-- <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+                                        <i class="fa fa-angle-down ml-2 opacity-8"></i> -->
                                     </a>
                                     <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                         <button type="button" tabindex="0" class="dropdown-item">User Account</button>
@@ -120,26 +120,30 @@
                                 </div>
                             </div>
                             <div class="widget-content-left  ml-3 header-user-info">
-                                <div class="widget-heading">
+                                <!-- <div class="widget-heading">
                                     Alina Mclourd
-                                </div>
-                                <div class="widget-subheading">
+                                </div> -->
+                                <!-- <div class="widget-subheading">
                                     VP People Manager
-                                </div>
+                                </div> -->
                             </div>
                             <div class="widget-content-right header-user-info ml-3">
-                                <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                                    <i class="fa text-white fa-calendar pr-1 pl-1"></i>
-                                </button>
+
+                            <form method ="POST" action = "appsidebar.php">
+                            <button type="submit" class="btn btn-primary" name=logout>
+                            <i class=""></i> <b>Logout</b>
+                            </button>
+                            </form>
+                              
                             </div>
                         </div>
                     </div>
                 </div>        </div>
         </div>
     </div>        <div class="ui-theme-settings">
-        <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
+        <!-- <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
             <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
-        </button>
+        </button> -->
         <div class="theme-settings__inner">
             <div class="scrollbar-container">
                 <div class="theme-settings__options-wrapper">
@@ -447,49 +451,214 @@
                     </span>
                 </div>    <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
-                        <ul class="vertical-nav-menu">
+                        <ul class="vertical-nav-menu ">
                           
-                            <li class="app-sidebar__heading">UI Components</li>
-                            <li
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            >
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-diamond"></i>
-                                    View form
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                            <!-- <li class="app-sidebar__heading">UI Components</li> -->
+
+                            <?php
+                            if($designation == 'Admin'){
+                            ?>
+                            <li class='mm-active'>
+                                <a href="#" >
+                                    <i class="metismenu"></i>
+                                    Admin
+                                    <i class="metismenu-angle-down "></i>
                                 </a>
-                                <ul
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                >
-                                    <li>
-                                        <a href="viewform_announcement.php">
-                                            <i class="metismenu-icon"></i>
-                                            Announcement
+                                <ul>
+                             </li>
+                                     <li>
+                                        <a href="viewform_count.php" id="count_style">
+                                            <i class="metismenu-icon">
+                                            </i>Count
+                                        </a>
+                                    </li>
+
+                                    <li >
+                                        <a href="viewform_staff_register.php" id="staff_register_style">
+                                            <i class="metismenu-icon">
+                                            </i>Staff Register
+                                        </a>
+                                    </li>
+
+                                    <li >
+                                        <a href="viewform_announcement.php" id="announcement_style">
+                                            <i class="metismenu-icon">
+                                            </i>Announcement
+                                        </a>
+                                    </li>
+
+                                    <li >
+                                        <a href="viewform_jobrole.php" id="jobrole_style">
+                                            <i class="metismenu-icon">
+                                            </i>Job Role
+                                        </a>
+                                    </li>
+
+                                    <li >
+                                        <a href="viewform_log.php" id="log_style">
+                                            <i class="metismenu-icon">
+                                            </i>Log Details
+                                        </a>
+                                    </li>
+                                </ul>
+                                <?php } ?>
+                    
+
+                                <?php
+                            if($designation == 'HOD'){
+                            ?>
+                           
+                           <li class='mm-active'>
+                                    <a href="#">
+                                    <i class="metismenu"></i>
+                                    HOD
+                                    <i class="metismenu-angle-down"></i>
+                                </a>
+                                <ul>
+                                <li>
+                                        <a href="viewform_course.php" id="course_structure_style">
+                                            <i class="metismenu-icon">
+                                            </i>Course Structure
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="viewform_department.php" id="department_style">
+                                            <i class="metismenu-icon">
+                                            </i>Department Data
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="viewform_scheme.php" id="scheme_style">
+                                            <i class="metismenu-icon">
+                                            </i>Scheme
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
+                        <?php } ?>
+                        
+                        <?php
+                            if($designation == 'Web Incharge'){
+                            ?>
+
+                        <li class='mm-active'>
+                        <a href="#">
+                                    <i class="metismenu"></i>
+                                    Web Incharge
+                                    <i class="metismenu angle-down "></i>
+                                </a>
+                            <ul>
+                                    <li>
+                                        <a href="viewform_trainingprogram.php" id="training_program_style">
+                                            <i class="metismenu-icon">
+                                            </i>Training Program
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="viewform_facility.php" id="facility_style">
+                                            <i class="metismenu-icon">
+                                            </i>Facilities
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="viewform_placement.php" id="placement_style">
+                                            <i class="metismenu-icon">
+                                            </i>Placement
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="viewform_mousigned.php" id="mou_style">
+                                            <i class="metismenu-icon">
+                                            </i>MOU signed
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="viewform_award.php" id="award_style">
+                                            <i class="metismenu-icon">
+                                            </i>Award 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="viewform_studentawards.php" id="student_award_style">
+                                            <i class="metismenu-icon" >
+                                            </i>Students awards
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="viewform_eventsorgainzed.php" id="events_organized_style">
+                                            <i class="metismenu-icon">
+                                            </i>Events
+                                        </a>
+                                    </li>
+                                     <!-- <li>
+                                        <a href="faulty_award.php" id="faculty_award_style">
+                                            <i class="metismenu-icon">
+                                            </i>Faculty Award
+                                        </a>
+                                    </li> -->
+                                </ul>
+
+                              </li>
+
+                              <?php } ?>
+
+
+                              <?php
+                            if($designation == 'Faculty'){
+                            ?>
+
+                              <li class='mm-active'>
+                                    <a href="#">
+                                    <i class="metismenu"></i>
+                                    Faculty
+                                    <i class="metismenuangle-down"></i>
+                                </a>
+                                <ul>
+                                <li>
+                                        <a href="viewform_education.php">
+                                            <i class="metismenu-icon">
+                                            </i>Education
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="viewform_upload.php">
+                                            <i class="metismenu-icon">
+                                            </i>upload
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="viewform_social.php">
+                                            <i class="metismenu-icon">
+                                            </i>Social
+                                        </a>
+                                    </li>
+                                </ul>
+
+                              </li>
+                              <?php } 
+                              
+                              ?>
+
+                                
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                   
+                                    <!-- <li>
                                         <a href="view_form_education.php">
                                             <i class="metismenu-icon">
                                             </i> Education details
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="viewform_award.php">
-                                            <i class="metismenu-icon">
+                                        <a href="viewform_award.php" 
+                                        style="background-color: rgb(0,0,150)">
+                                            <i class="metismenu-icon active">
                                             </i>Award
                                         </a>
                                     </li>
@@ -510,169 +679,16 @@
                                             <i class="metismenu-icon">
                                             </i>Upload
                                         </a>
-                                    </li>
-                                    <li>
-                                        <a href="viewform_staff_register.php">
-                                            <i class="metismenu-icon">
-                                            </i>staff Register
-                                        </a>
-                                    </li>
-                                    
-                                </ul>
-                            </li>
-                            <li
-
-
-                            
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            >
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-car"></i>
-                                    Other Forms
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                >
-                                    <li>
-                                        <a href="award.php">
-                                            <i class="metismenu-icon">
-                                            </i>Award 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="count_dashboard.php">
-                                            <i class="metismenu-icon">
-                                            </i>Count 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="course_structure_dashboard.php">
-                                            <i class="metismenu-icon">
-                                            </i>Course Structure
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="education_dashboard.php">
-                                            <i class="metismenu-icon">
-                                            </i>Education Details
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="events_organized.php">
-                                            <i class="metismenu-icon">
-                                            </i>Events Organized
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="facilities_dashboard.php">
-                                            <i class="metismenu-icon">
-                                            </i>Facilities
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="faulty_award.php">
-                                            <i class="metismenu-icon">
-                                            </i>Faculty Award
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="internship.php">
-                                            <i class="metismenu-icon">
-                                            </i>Internship
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="personalprof_dash.php">
-                                            <i class="metismenu-icon">
-                                            </i>Personal Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="placement.php">
-                                            <i class="metismenu-icon">
-                                            </i>Placement
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="staff_register.php">
-                                            <i class="metismenu-icon">
-                                            </i>Staff Rgister
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="student_publication.php">
-                                            <i class="metismenu-icon">
-                                            </i>Student Publication
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="studentawards.php">
-                                            <i class="metismenu-icon">
-                                            </i>Student Awards
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="training_program.php">
-                                            <i class="metismenu-icon">
-                                            </i>Training Program
-                                        </a>
-                                    </li>
-
-
-                                    <li>
-                                        <a href="award.php">
-                                            <i class="metismenu-icon">
-                                            </i>Award
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="mousigned.php">
-                                            <i class="metismenu-icon">
-                                            </i>MOU Signed
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="social.php">
-                                            <i class="metismenu-icon">
-                                            </i>Social
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="upload.php">
-                                            <i class="metismenu-icon">
-                                            </i>Upload
-                                        </a>
-                                    </li>
+                                    </li> -->
+                                   
                                     
                                 </ul>
                             </li>
                             
-                        </ul>
                     </div>
                 </div>
             </div>
             <div class="app-main__outer">
-                    <div class="main-card m-3 card min-vh-100">
-                        <div class="card-body">
+                    <!-- <div class="main-card m-3 card min-vh-100">
+                        <div class="card-body"> -->
 

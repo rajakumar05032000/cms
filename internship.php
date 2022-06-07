@@ -36,30 +36,53 @@ if (isset($_POST['submit'])) {
     
     $tmpFilePath = $_FILES['image']['tmp_name'];
     $rfile_name_img = 'internsip_'.$deptname.'-'.date('m-d-Y-His').$_FILES["image"]['name'];
-    move_uploaded_file($tmpFilePath, "images/".$rfile_name_img);
+    move_uploaded_file($tmpFilePath, "images/".$deptname."/internship"."/".$batch."/".$rfile_name_img);
 
     $tmpFilePath = $_FILES['pdf']['tmp_name'];
-    $rfile_name_pdf = 'internsip_'.$deptname.'-'.date('m-d-Y-His').$_FILES["image"]['name'];
-    move_uploaded_file($tmpFilePath, "images/".$rfile_name_pdf);
+    $rfile_name_pdf = 'internsip_'.$deptname.'-'.date('m-d-Y-His').$_FILES["pdf"]['name'];
+    move_uploaded_file($tmpFilePath, "images/".$deptname."/internship"."/".$batch."/".$rfile_name_pdf);
 
     $sql = "insert into internship values(null,'$deptname','$batch','$description','$type','$count','$rfile_name_img','$rfile_name_pdf','$students_name_json','$students_roll_json')";    
     $result = mysqli_query($conn,$sql);
+
+    if ($result) {
+        $login_tym = $_SESSION["login_tym"] ;
+        $emp_id =  $_SESSION["empid"] ;
+        
+        $sql = "select * from log_details where login_tym ='$login_tym' and user ='$emp_id' ";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+        $action = $row['action'];
+        $form = $row['form'];
+
+        $t1 = $action.",inserted internship";
+        $t2 = $form.", internship";
+
+
+        $sql = "update log_details set action = '$t1', form = '$t2' where login_tym ='$login_tym' and user ='$emp_id'";
+        $result = mysqli_query($conn,$sql);
+        echo "<script>alert('Internship details inserted Successfully')</script>";
+        } 
+  else {
+            echo "<script>alert('Woops! Something Wrong Went.')</script>";
+        }
 
 }
 
 ?>
 
 
-<div class="row mt-2">
-<div class="col">
-    <h4 class="text-center">Internship</h4>
-</div>   
-</div>
+
+<h2 class="ms-3 mt-2"><b>Internship</b></h2>
+    <div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                        <div class="card-body">
+
 
 <form method="POST" action="" enctype="multipart/form-data">
 <div class="row mt-3">
 
-<div class="col-md-2">
+<div class="col-md-3">
     <label for="name" class="form-label">Batch</label>
     <input type="text" class="form-control" name="batch" id="datepicker" />
 </div>
@@ -91,7 +114,7 @@ if (isset($_POST['submit'])) {
     </select>
     </div>
 
-     <div class="col-md-2">
+     <div class="col-md-3">
     <label for="count" class="form-label ">No. of. Students</label>
     <input type="text " class="form-control" id="count" name="count">
     </div>
@@ -99,13 +122,12 @@ if (isset($_POST['submit'])) {
 
 <div class="row mt-5" id="roll">
 
+
 </div>
 
-<div class="row mt-4">
-<div class="col-md-12 text-center">
-<button type="Submit" class="btn btn-primary btn-lg mb-4 " name="submit">Submit</button>
-</div>
-</div>
+
+<button type="Submit" class="btn btn-primary btn-lg mt-4 mb-4 " name="submit">Submit</button>
+
 
 </form>
 
@@ -117,7 +139,8 @@ include 'endtags.php';
 
 
 <script>
-$("#count").on('change',()=>{
+function changecount()
+{
    var a = document.getElementById("count").value;
    var txt = '<div class="row mt-3 "><div class="col-md-3"><label for="" class="form-label ">Name</label><input type="text " class="form-control"'
    var rol = '<div class="col-md-3"><label for="" class="form-label ">Roll no</label><input type="text " class="form-control"'
@@ -127,6 +150,8 @@ $("#count").on('change',()=>{
        txt2 = txt + 'id="sname[]'+'" name="sname[]'+'"></div>'+rol+'id="srol[]'+'" name="srol[]'+'" </div>';
     $("#roll").prepend(txt2);
    }
-})
+}
+
+$("#count").on('change',changecount)
 </script>
 

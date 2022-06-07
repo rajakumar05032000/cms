@@ -4,6 +4,10 @@ error_reporting(0);
 
 session_start();
 
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Web Incharge') {
+  header("Location: new_login.php");
+}
+
 $sql = "create table if not exists facilities( feature varchar(10),Title_of_the_laboratory varchar(100),
 major_equipment_details varchar(200),date_of_inaugration varchar(100),cost_in_lakhs varchar(100))";
 

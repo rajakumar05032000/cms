@@ -5,18 +5,23 @@ include 'db_conn.php';
 error_reporting(0);
 
 session_start();
-
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Web Incharge') {
+    header("Location: new_login.php");
+  }
 ?>
-
 <?php
-include 'appsidebar.php'
+include 'appsidebar.php';
 ?>
-                        <div class="row">
-                            <div class="col-md-5">
-                            <h3 class="card-title">View Form</h3>   
+                            <h2 class="ms-3 mt-3" ><b>Award-View</b></h2>   
+                            <!-- </div> -->
+                            <div class="main-card m-3 card min-vh-50"style="min-height:60%">
+                            <div class="card-body">
+                            <div class="row">
+                            <div class="col-md-7 mb-3 mt-3  ms-3">
+                            <input type="text" class="form-control" id="myInput" name="search" placeholder="Search Here..." onkeyup="searchfunction()">
                             </div>
-                            <div class="col-md-7 mb-3">
-                            <input type="text" class="form-control" id="myInput" name="search" placeholder="Stat typing Title ,to search" onkeyup="searchfunction()">
+                            <div class="col-md-2 mt-3">
+                                <input type="button" class="btn btn-primary float-right" name ="Insert" value="Insert" onclick="window.location.href='insert_award.php'">
                             </div>
                         
                             
@@ -62,7 +67,24 @@ include 'appsidebar.php'
                             </table>
                             <?php
                             }
+                            else{
+                              ?>
+                              <table class="mb-0 table table-hover" id="myTable">
+                                <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>award Id</th>
+                                    <th>Title of the award</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                              </table>
+                            <?php
+                            }
                             ?>
+                            
                         </div>
                     </div>
                         </div>
@@ -71,7 +93,7 @@ include 'appsidebar.php'
     </div>
 <script type="text/javascript" src="./assets/scripts/main.js"></script>
 
-<script>
+<!-- <script>
 
 function searchfunction() {
   
@@ -94,8 +116,18 @@ function searchfunction() {
     }
   }
 }
-</script>
+</script> -->
 
+
+<style>
+  #award_style
+  {
+    background-color: rgb(135,206,235);
+  }
+  </style>
 
 </body>
 </html>
+<?php
+include 'endtags.php'
+?>

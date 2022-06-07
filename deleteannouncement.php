@@ -2,9 +2,18 @@
 session_start(); 
 $del_id=$_GET['id'];
 
+
+
 include 'db_conn.php';
 
-$sql = "delete from announcement where id='$del_id'";
+
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Admin') {
+    header("Location: new_login.php");
+}
+
+
+
+$sql = "delete from announcement_details where id='$del_id'";
 $result = mysqli_query($conn,$sql);
 
 if($result)

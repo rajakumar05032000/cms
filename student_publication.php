@@ -45,11 +45,9 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-<div class="row mt-2">
-<div class="col">
-<h4 class="text-center">Student Publications</h4>
-</div>
-</div>
+<h2 class="ms-3 mt-2"><b>Student Publication</b></h2>
+    <div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                        <div class="card-body">
 
 <form method="POST" action="" enctype="multipart/form-data">
 
@@ -86,11 +84,9 @@ if (isset($_POST['submit'])) {
 
 <div class="row mt-3" id="roll"></div>
 
-<div class="row mt-3">
-<div class="col-md-12 text-center">
-<button type="Submit" class="btn btn-primary btn-lg mb-4 " name="submit">Submit</button>
-</div>
-</div>
+
+<button type="Submit" class="btn btn-primary btn-lg mb-4 mt-4 " name="submit">Submit</button>
+
 
 </form>
 

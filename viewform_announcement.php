@@ -6,32 +6,30 @@ error_reporting(0);
 
 session_start();
 
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Admin') {
+  header("Location: new_login.php");
+}
+
+
 ?>
 
 <?php
 include 'appsidebar.php'
 ?>
+<h2 class="ms-3 mt-2"><b>Announcement</b></h2>
+    <div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                        <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3">
-                            <h3 class="card-title">View Form</h3>   
-                            </div>
+                            
                             <div class="col-md-7 mb-3">
-                            <input type="text" class="form-control" id="myInput" name="search" placeholder="Stat typing Title ,to search" onkeyup="searchfunction()">
+                            <input type="text" class="form-control" id="myInput" name="search" placeholder="Search here" onkeyup="searchfunction()">
                             </div>
-                            <div class="col-sm">
-                                <input type="button" class="btn btn-primary float-right" name ="insert" value="insert" onclick="window.location.href='insert_announcement.php'">
+                            <div class="col-md-2   ">
+                                <input type="button" class="btn btn-primary" name ="insert" value="insert" onclick="window.location.href='insert_announcement.php'">
                             </div>
                             
                         </div>    
-                        
-                             <?php
-                                    $sql = "select * from announcement";
-                                    $result = mysqli_query($conn,$sql);
-                                ?>
-                                <?php
-                                if(mysqli_num_rows($result) > 0){
-                                    ?>
-                                    <div class="table-responsive-sm">
+                        <div class="table-responsive-sm">
                             <table class="mb-0 table table-hover" id="myTable">
                                 <thead>
                                 <tr>
@@ -42,6 +40,14 @@ include 'appsidebar.php'
                                 </tr>
                                 </thead>
                                 <tbody>
+                             <?php
+                                    $sql = "select * from announcement_details";
+                                    $result = mysqli_query($conn,$sql);
+                                ?>
+                                <?php
+                                if(mysqli_num_rows($result) > 0){
+                                    ?>
+                                 
                                 <?php
                                 $i=1;
                                 while($row = mysqli_fetch_array($result)) {
@@ -98,6 +104,12 @@ function searchfunction() {
 }
 </script>
 
+<style>
+  #announcement_style
+  {
+    background-color: rgb(135,206,235);
+  }
+  </style>
 
 </body>
 </html>

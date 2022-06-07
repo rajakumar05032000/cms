@@ -19,7 +19,7 @@ if (isset($_POST['logout'])) {
 	$result = mysqli_query($conn, $sql1);
 
     session_destroy();
-    header("Location: login.php");
+    header("Location: new_login.php");
 }
 
 ?>

@@ -26,6 +26,32 @@ if (isset($_POST['submit'])) {
     {
         header("Location: update_upload.php?id=$a_id");
     }
+    {  
+        try{
+            $login_tym = $_SESSION["login_tym"] ;
+            $emp_id =  $_SESSION["empid"] ;
+            $sql = "select * from log_details where login_tym ='$login_tym' and emp_id ='$emp_id' ";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            $action = $row['action'];
+            $form = $row['form'];
+
+            $t1 = $action.",updated upload";
+            $t2 = $form.", upload form";
+
+
+            $sql = "update log_details set action = '$t1', form = '$t2' where login_tym ='$login_tym' and emp_id ='$emp_id'";
+            $result = mysqli_query($conn,$sql);
+            echo '<div class="alert alert-success alert-dismissable" id="flash-msg" style="margin-top:70px">
+                <h4>upload added successfully</h4>
+            </div>';
+        } 
+        catch(e)
+        {
+            echo e;     
+        }
+    }
 
 }
 
@@ -68,5 +94,11 @@ include 'appsidebar.php'
                             <center><button type="Submit" class="btn btn-primary"  name="submit">update</button></center>
                             </div>
                         </div>
+                        <script>
+        const alertBox = document.getElementById("flash-msg");
+        setTimeout(() => {
+            alertBox.style.display = "none";
+        }, 3000);   
+</script>
 
 </body>

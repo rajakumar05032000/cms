@@ -7,6 +7,9 @@ error_reporting(0);
 session_start();
 
 
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Faculty') {
+    header("Location: new_login.php");
+  }
 
 
 // if (isset($_POST['submit'])) {

@@ -5,6 +5,9 @@ error_reporting(0);
 
 session_start();
 
+$sql = "create table if not exists log_details(id int auto_increment primary key ,login_tym varchar(200),logout_tym varchar(200),user varchar(100),form varchar(1000),action varchar(5000))";
+$result = mysqli_query($conn,$sql);
+
   $message="";
   if(!empty($_POST['g-recaptcha-response']))
   {
@@ -32,7 +35,17 @@ session_start();
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION["deptname"] = $row["deptname"];
                 $_SESSION["empid"] = $row["emp_id"];
-                header("Location: course_structure_dashboard.php");
+                $emp_id = $row["emp_id"];
+                $login_tym = date('Y-m-d H:i:s'); 
+                $_SESSION["login_tym"] = $login_tym;
+                $sql = "insert into log_details(login_tym,user) values('$login_tym','$emp_id')";
+                $result = mysqli_query($conn,$sql);
+                $sql = "select * from jobrole";
+                $result = mysqli_query($conn,$sql);
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION['designation'] = $row['designation'];
+                
+                header("Location: landingpage.php");
           }
         else {
             echo "<script>alert('User not found')</script>";

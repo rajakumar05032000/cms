@@ -24,10 +24,33 @@ if (isset($_POST['submit'])) {
 
     $tmpFilePath = $_FILES['image']['tmp_name'];
     $rfile_name = 'Faculty_award_'.$deptname.'-'.date('m-d-Y-His').$_FILES["image"]['name'];
-    move_uploaded_file($tmpFilePath, "images/".$rfile_name);
+    move_uploaded_file($tmpFilePath, "images/".$deptname."/facultyaward"."/".$rfile_name);
     
     $sql = "insert into faculty_awards values(null,'$deptname','$type','$description','$date_','$rfile_name')";    
     $result = mysqli_query($conn,$sql);
+
+    if ($result) {
+        $login_tym = $_SESSION["login_tym"] ;
+        $emp_id =  $_SESSION["empid"] ;
+        
+        $sql = "select * from log_details where login_tym ='$login_tym' and user ='$emp_id' ";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+        $action = $row['action'];
+        $form = $row['form'];
+
+        $t1 = $action.",inserted faculty_award";
+        $t2 = $form.", faculty_award";
+
+
+        $sql = "update log_details set action = '$t1', form = '$t2' where login_tym ='$login_tym' and user ='$emp_id'";
+        $result = mysqli_query($conn,$sql);
+        echo "<script>alert('faculty_award details inserted Successfully')</script>";
+        } 
+  else {
+            echo "<script>alert('Woops! Something Wrong Went.')</script>";
+        }
 
 }
 
@@ -52,11 +75,10 @@ fetchnames();
 </script>
 
 
-<div class="row mt-2">
-<div class="col">
-    <h4 class="text-center">Faculty Award</h4>
-</div>   
-</div>
+
+    <h2 class="ms-3 mt-2"><b>Faculty Award</b></h2>
+    <div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                        <div class="card-body">
 
 <form method="POST" action="" enctype="multipart/form-data">
  <div class="row mt-4">
@@ -88,11 +110,9 @@ fetchnames();
                                 </div>
 </div>
 
-<div class="row mt-3">
-    <div class="col-md-12 text-center">
-    <button type="Submit" class="btn btn-primary btn-lg mb-4 " name="submit">Submit</button>
-    </div>
-</div>
+
+    <button type="Submit" class="btn btn-primary btn-lg mb-2 mt-5" name="submit">Submit</button>
+
 
         </form>
 <?php

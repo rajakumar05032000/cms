@@ -74,17 +74,17 @@ if (isset($_POST['submit'])) {
 <?php
 include 'appsidebar.php'
 ?>
-                    <center>
-                        <h4 class="mt-3">Personal Profile</h4>
-                    </center>
+                   <h2 class="ms-3 mt-2"><b>Personal Profile</b></h2>
+    <div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                        <div class="card-body">
                     <div class="col-md-12">
                         <form method="POST" action="" enctype="multipart/form-data">
                             <div class="row me-2">
-                                <div class="col-md-5">
+                                <div class="col-md-3">
                                     <label for="name" class="form-label mt-3">Employee Id</label>
                                     <input type="text " class="form-control" id="Emp_id" name="Emp_id" value="<?php echo $empid; ?>" disabled>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <label for="name" class="form-label mt-3">Employee Name</label>
                                     <select id="emp_name_a" class="form-select" name="emp_name_a">
                                         <option selected="">Choose...</option>
@@ -115,7 +115,7 @@ include 'appsidebar.php'
                                 </div>
                             </div>
 
-                            <div class="row mt-3 me-2 ">
+                            <div class="row mt-4 me-2 ">
                                 <div class="col-md-3 ">
                                     <label for="dob" class="form-label">Date of Birth</label>
                                     <input type="date" class="form-control" id="dob" name="dob">
@@ -148,7 +148,7 @@ include 'appsidebar.php'
                             </div>
 
 
-                            <div class="row mt-3 me-2 ">
+                            <div class="row mt-4 me-2 ">
                                 <div class="col-md-3 ">
                                     <label for="dojpsg" class="form-label">Date of Joining at PSG</label>
                                     <input type="date" class="form-control" id="dojpsg" name="dojpsg">
@@ -166,7 +166,7 @@ include 'appsidebar.php'
                             </div>
 
                             <div class="row mt-5">
-                                <h4 class="text-center mt-5">Permanent Address</h4>
+                            <h4 class="text-center"><b>Permanent Address</b></h4>
                             </div>
                             <div class="row mt-4 me-2">
                                 <div class="col-md-4">
@@ -193,10 +193,10 @@ include 'appsidebar.php'
 
 
                             <div class="row mt-4">
-                                <h4 class="text-center mt-5">Contact Address</h4>
+                            <h4 class="text-center mt-5"><b>Contact Address</b></h4>
                             </div>
                             <div class="row mt-1 me-2">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="cdoorandstreet" class="form-label">Door No & Street Name</label>
                                     <input type="text " class="form-control" id="cdoorandstreet" name="cdoorandstreet">
                                 </div>
@@ -206,7 +206,7 @@ include 'appsidebar.php'
                                     <input type="text " class="form-control" id="clocality" name="clocality">
                                 </div>
 
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <label for="ccity" class="form-label">City</label>
                                     <input type="text " class="form-control" id="ccity" name="ccity">
                                 </div>
@@ -287,11 +287,9 @@ include 'appsidebar.php'
                                
                             </div>
 
-                            <div class="row mt-5 mb-3">
-                                    <div class="text-center">
-                                        <button type="Submit" class="btn btn-primary mb-4 "  name="submit">Submit</button>
-                                    </div>
-                            </div>
+                            
+                                        <button type="Submit" class="btn btn-primary mb-4 mt-4 "  name="submit">Submit</button>
+                              
                     </div>
                 </div>
                 <script type="text/javascript" src="./assets/scripts/main.js"></script>

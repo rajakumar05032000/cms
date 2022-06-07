@@ -6,16 +6,19 @@ error_reporting(0);
 
 session_start();
 
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Faculty') {
+  header("Location: new_login.php");
+}
 ?>
 
 
 <?php
 include 'appsidebar.php'
-?>
+?><h2 class="ms-3 mt-3"><b>View_upload</b></h2>
+<div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                    <div class="card-body">
                         <div class="row">
-                            <div class="col-md-5">
-                            <h3 class="card-title">View Form</h3>   
-                            </div>
+                         
                             <div class="col-md-7 mb-3">
                             <input type="text" class="form-control" id="myInput" name="search" placeholder="Stat typing Title ,to search" onkeyup="searchfunction()">
                             </div>
@@ -100,5 +103,11 @@ function searchfunction() {
 </script>
 
 
+<style>
+  #upload_style
+  {
+    background-color: rgb(135,206,235);
+  }
+  </style>
 </body>
 </html>

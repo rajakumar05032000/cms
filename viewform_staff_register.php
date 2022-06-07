@@ -11,6 +11,12 @@ session_start();
 //     header("Location: new_login.php");
 // }
 
+
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Admin') {
+  header("Location: new_login.php");
+}
+
+
 if (isset($_POST['submit'])) {
 
 	$deptname = $_POST['DeptName'];
@@ -44,43 +50,33 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
-
-    <!-- Title Page-->
-    <title>View-Form</title>
-
-    <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Vendor CSS-->
-    <link href="vendor/select2/reg/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="css/reg_main.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/staff_register.css">
-</head>
-    
+<?php
+include 'appsidebar.php';
+?>
 <body>
+
+<div class="row">
+  <div class="col-md-4">
+  <h2 class="ms-3 mt-3"><b>Staff Register</b></h2>
+  </div>
+
+  <div class="col text-end me-4">
+    <a href="staff_register.php">
+  <button type="button" class="btn btn-primary btn-lg mt-4 " id="addbt" name="Addbt">Insert </button>
+</a>
+  </div>
+
+</div>
+
+
+
+
+    <div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                        <div class="card-body">
     <form method="POST" action=""> 
-        <div class="container-login100" style="background-image: url('images/img-01.jpg');">
-        <div class="container card p-5">
+       
           
-            <div class="row mx-auto mb-5"><h1>View Form</h1></div>
+            <div class="row "></div>
            <div class="row g-3">
         
           <div class="col-md-3">
@@ -153,7 +149,7 @@ if (isset($_POST['submit'])) {
             </div>
         
             <div class="col-md-3 offset-md-1">
-                 <div class="col-12">
+                 <div class="col-14">
             <label for="BloodGrp" class="form-label">Blood Group</label>
             <select id="BloodGrp" class="form-select" name="BloodGrp">
               <option selected>Choose...</option>
@@ -339,5 +335,13 @@ if (isset($_POST['submit'])) {
             }
 
          </script>
+
+         
+<style>
+  #staff_register_style
+  {
+    background-color: rgb(135,206,235);
+  }
+  </style>
     </body>
     </html>        

@@ -15,6 +15,7 @@ fors varchar(500),
 start_date varchar(100),
 end_date varchar(100),
 pdf varchar(500),
+title varchar(500),
 speaker json,
 description json )";
 
@@ -33,24 +34,46 @@ if (isset($_POST['submit'])) {
     $fors = $_POST['fors'];
     $dos = $_POST['dos'];
     $doe = $_POST['doe'];
+    $title = $_POST['title'];
     
     $tmpFilePath = $_FILES['pdf']['tmp_name'];
     $rfile_name_pdf = 'training_program_'.$deptname.'-'.date('m-d-Y-His').$_FILES["pdf"]['name'];
-    move_uploaded_file($tmpFilePath, "images/".$rfile_name_pdf);
+    move_uploaded_file($tmpFilePath, "images/".$deptname."/"."training_program/".$rfile_name_pdf);
 
 
-    $sql = "insert into training_program values(null,'$deptname','$type','$fors','$dos','$doe','$rfile_name_pdf','$speaker_json','$description_json')";    
+    $sql = "insert into training_program values(null,'$deptname','$type','$fors','$dos','$doe','$rfile_name_pdf','$title','$speaker_json','$description_json')";    
     $result = mysqli_query($conn,$sql);
+
+    if ($result) {
+        $login_tym = $_SESSION["login_tym"] ;
+        $emp_id =  $_SESSION["empid"] ;
+        
+        $sql = "select * from log_details where login_tym ='$login_tym' and user ='$emp_id' ";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+        $action = $row['action'];
+        $form = $row['form'];
+
+        $t1 = $action.",inserted training_program_details";
+        $t2 = $form.", training_program_details";
+
+
+        $sql = "update log_details set action = '$t1', form = '$t2' where login_tym ='$login_tym' and user ='$emp_id'";
+        $result = mysqli_query($conn,$sql);
+        echo "<script>alert('training_program details inserted Successfully')</script>";
+        } 
+  else {
+            echo "<script>alert('Woops! Something Wrong Went.')</script>";
+        }
 
 }
 
 ?>
 
-                            <div class="row mt-2">
-                                <div class="col">
-                                    <h4 class="text-center">Training Progamme</h4>
-                                </div>   
-                            </div>
+<h2 class="ms-3 mt-2"><b>Training Program</b></h2>
+    <div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                        <div class="card-body">
                             <form method="POST" action="" enctype="multipart/form-data">
                             <div class="row mt-2">
                                 <div class="col-md-3">
@@ -151,6 +174,12 @@ $("#datepicker").datepicker({
     })
 </script>
 
+<style>
+  #training_program_style
+  {
+    background-color: rgb(135,206,235);
+  }
+  </style>
 </body>
     </html>
     

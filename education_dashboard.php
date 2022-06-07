@@ -4,6 +4,9 @@ error_reporting(0);
 
 session_start();
 
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Faculty') {
+    header("Location: new_login.php");
+  }
 $sql = "create table if not exists education( id varchar(10) primary key,faculty_code varchar(100),
 department_code varchar(50),
 graduate varchar(50),

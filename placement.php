@@ -33,16 +33,37 @@ if (isset($_POST['submit'])) {
     $sql = "insert into placement values(null,'$deptname','$year','$company_title','$count','$students_name_json','$students_roll_json')";    
     $result = mysqli_query($conn,$sql);
 
+
+    if ($result) {
+        $login_tym = $_SESSION["login_tym"] ;
+        $emp_id =  $_SESSION["empid"] ;
+        
+        $sql = "select * from log_details where login_tym ='$login_tym' and user ='$emp_id' ";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+        $action = $row['action'];
+        $form = $row['form'];
+
+        $t1 = $action.",inserted placement_details";
+        $t2 = $form.", placement_details";
+
+
+        $sql = "update log_details set action = '$t1', form = '$t2' where login_tym ='$login_tym' and user ='$emp_id'";
+        $result = mysqli_query($conn,$sql);
+        echo "<script>alert('placement details inserted Successfully')</script>";
+        } 
+  else {
+            echo "<script>alert('Woops! Something Wrong Went.')</script>";
+        }
 }
 
 ?>
 
 
-<div class="row mt-2">
-<div class="col">
-<h4 class="text-center">Placement Details</h4>
-</div>
-</div>
+<h2 class="ms-3 mt-2"><b>Placement</b></h2>
+    <div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                        <div class="card-body">
 
 <form method="POST" action="" enctype="multipart/form-data">
 <div class="row mt-3">
@@ -68,16 +89,19 @@ if (isset($_POST['submit'])) {
 
 </div>
 
-<div class="row mt-4">
-<div class="col-md-12 text-center">
-<button type="Submit" class="btn btn-primary btn-lg mb-4 " name="submit">Submit</button>
-</div>
-</div>
+
+<button type="Submit" class="btn btn-primary btn-lg mb-4 mt-4" name="submit">Submit</button>
+
 
 
 </form>
 
-
+<style>
+  #placement_style
+  {
+    background-color: rgb(135,206,235);
+  }
+  </style>
 
 
 

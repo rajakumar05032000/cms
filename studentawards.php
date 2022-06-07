@@ -62,17 +62,35 @@ if (isset($_POST['submit'])) {
         $result = mysqli_query($conn,$sql);
     }
     
-    move_uploaded_file($tmpFilePath, "images/".$rfile_name_img);
+    move_uploaded_file($tmpFilePath, "images/".$deptname."/"."student_awards/".$year."/".$rfile_name_img);
+
+   
+        $login_tym = $_SESSION["login_tym"] ;
+        $emp_id =  $_SESSION["empid"] ;
+        
+        $sql = "select * from log_details where login_tym ='$login_tym' and user ='$emp_id' ";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+        $action = $row['action'];
+        $form = $row['form'];
+
+        $t1 = $action.",inserted student_award_details";
+        $t2 = $form.", student_award_details";
+
+
+        $sql = "update log_details set action = '$t1', form = '$t2' where login_tym ='$login_tym' and user ='$emp_id'";
+        $result = mysqli_query($conn,$sql);
+        echo "<script>alert('student_award details inserted Successfully')</script>";
+  
 
 }
 
 ?>
 
-                            <div class="row mt-2">
-                                <div class="col">
-                                    <h4 class="text-center">Student Awards</h4>
-                                </div>   
-                            </div>
+<h2 class="ms-3 mt-2"><b>Student Awards</b></h2>
+    <div class="main-card m-3 card min-vh-75"  style="min-height:55%">
+                        <div class="card-body">
                             <form method="POST" action="" enctype="multipart/form-data">
                             <div class="row mt-2">
                                 <div class="col-md-4">
@@ -135,11 +153,9 @@ if (isset($_POST['submit'])) {
                             </div>
 
 
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <button type="Submit" class="btn btn-primary btn-lg mb-4 " name="submit">Submit</button>
-                                </div>
-                            </div>
+                           
+                                    <button type="Submit" class="btn btn-primary btn-lg mb-4 mt-3 " name="submit">Submit</button>
+                             
 </form>
 
                         </div>
@@ -194,7 +210,12 @@ function chang()
 }
 </script>
 
-
+<style>
+  #student_award_style
+  {
+    background-color: rgb(135,206,235);
+  }
+  </style>
 </body>
     </html>
     

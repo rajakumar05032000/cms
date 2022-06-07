@@ -10,6 +10,10 @@ include 'db_conn.php';
 error_reporting(0);
     
 session_start();
+
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Web Incharge') {
+    header("Location: new_login.php");
+  }
     
 $sql = "create table if not exists mousigned(id int not null auto_increment primary key, collaboratingg varchar(100),
 datee varchar(50),
@@ -76,3 +80,9 @@ include 'appsidebar.php'
                             <?php
 include 'endtags.php'
 ?>
+<style>
+  #mou_style
+  {
+    background-color: rgb(135,206,235);
+  }
+  </style>

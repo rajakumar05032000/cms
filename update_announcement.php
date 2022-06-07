@@ -7,7 +7,14 @@ session_start();
 
 $a_id = $_GET['id'];
 
-$sql = "select * from announcement where id='$a_id'";
+
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Admin') {
+    header("Location: new_login.php");
+}
+
+
+
+$sql = "select * from announcement_details where id='$a_id'";
 $result = mysqli_query($conn,$sql);
 
 $row = mysqli_fetch_assoc($result);
@@ -21,7 +28,7 @@ if (isset($_POST['submit'])) {
     $url=$_POST['URL_to_be_linked'];
     $file=$_POST['File'];
     
-    $sql = "update announcement set fromm ='$from', tooo='$to', doe = '$doe', title='$title', url = '$url', file = '$file' where id = '$a_id' ";
+    $sql = "update announcement_details set fromm ='$from', tooo='$to', doe = '$doe', title='$title', url = '$url', file = '$file' where id = '$a_id' ";
     $result = mysqli_query($conn,$sql);
 
     if($result)
@@ -39,12 +46,10 @@ include "appsidebar.php"
 ?>
 
 
-                        <center><h1 class="mt-3">Announcement Form</h1></center>
-                        <div class="row">
-                            <div class="col mx-2">
-                                <label for="name" class="form-label mt-3">Announcement should be active:</label>
-                            </div>
-                        </div>
+<h2 class="ms-3"><b>Announcement Form</b></h2>
+                        <div class="main-card m-3 card min-vh-75" style="min-height:50%" style="min-height:60%">
+                        <div class="card-body">
+                        
                     <form method="POST" action="" class="mx-2">
                         <div class="row">
                                 <div class="col">
@@ -64,22 +69,23 @@ include "appsidebar.php"
                         <div class="row">
                             <div class="col">
                                 <label for="name" class="form-label mt-3">Title of the link</label>
-                                <textarea class="form-control " id="title_of_the_link" name="title_of_the_link" rows="5"><?php echo $row['title'] ?></textarea>
+                                <textarea class="form-control " id="title_of_the_link" name="title_of_the_link" rows="3"><?php echo $row['title'] ?></textarea>
         
+                            </div>
+                            <div class="col">
+                                <label for="name" class="form-label mt-3">URL to be linked</label>
+                                <textarea class="form-control " id="URL_to_be_linked" name="URL_to_be_linked" rows="3"><?php echo $row['url'] ?></textarea>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
-                                <label for="name" class="form-label mt-3">URL to be linked</label>
-                                <textarea class="form-control " id="URL_to_be_linked" name="URL_to_be_linked" rows="5"><?php echo $row['url'] ?></textarea>
-                            </div>
-                            <div class="col">
+                           
+                            <div class="col-md-6">
                                 <label for="name" class="form-label mt-3">File to be linked,if any</label>
                                 <input onclick="f2()" type="file" class="form-control" id="File" name="File" value="<?php echo $row['file'] ?>">
                             </div>
                         </div>
                         
-                                <center><button type="Submit" class="btn btn-primary mt-4 mb-4" name="submit">Update</button></center>
+                                <button type="Submit" class="btn btn-primary mt-4 mb-4" name="submit">Update</button>
                     
                 </form></div>
 

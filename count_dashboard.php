@@ -7,6 +7,12 @@ error_reporting(0);
 session_start();
 
 
+if (!isset($_SESSION['empid']) && $_SESSION['designation']!='Admin') {
+    header("Location: new_login.php");
+}
+
+
+
 $sql = "create table if not exists counts(id varchar(10) primary key,students varchar(100),
 qualified_faculty varchar(50),
 classroom varchar(20),
